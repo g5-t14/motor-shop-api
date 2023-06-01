@@ -1,4 +1,3 @@
-import { hash } from "bcryptjs"
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities/user.entity"
 import { TUserResponse, TUserUpdateRequest } from "../../interfaces/user.interfaces"
@@ -22,8 +21,6 @@ const updateUserService = async (data: TUserUpdateRequest, userId: string): Prom
         ...user,
         ...data
     })
-
-    userUpdated.password = await hash(userUpdated.password, 10)
 
     await userRepository.save(userUpdated)
 
