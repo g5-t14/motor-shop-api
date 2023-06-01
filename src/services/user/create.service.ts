@@ -2,7 +2,7 @@ import { Repository } from "typeorm"
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities/user.entity"
 import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces"
-import { userSchema, userSchemaResponse } from "../../schemas/user.schema"
+import { userSchemaResponse } from "../../schemas/user.schema"
 
 
 
