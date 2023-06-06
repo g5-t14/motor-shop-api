@@ -6,9 +6,9 @@ import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces"
 
 const createUserController = async (req: Request, res: Response) => {
 
-    const data: TUserRequest = req.body
+    const data = req.body
 
-    const newUser: TUserResponse = await createUserService(data)
+    const newUser = await createUserService(data)
 
     return res.status(201).json(newUser)
 

@@ -1,33 +1,28 @@
-import { Repository } from "typeorm"
-import { AppDataSource } from "../../data-source"
-import { User } from "../../entities/user.entity"
+import { prisma }  from "../../server"
+import { User } from "@prisma/client"
 import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces"
 import { userSchemaResponse } from "../../schemas/user.schema"
 
 
-
 const createUserService = async (data: TUserRequest): Promise<TUserResponse> => {
 
-    const { email } = data
+    const { email, password } = data
 
-    const userRepository: Repository<User> = AppDataSource.getRepository(User)
-
-    const findUser: User | null = await userRepository.findOne({
+    const findUser: User | null = await prisma.user.findFirst({
         where: {
             email
         }
     })
-
+    
+    
     if(findUser){
         throw new Error("User already exists!")
     }
 
-    const user: User = userRepository.create(data)
 
-    await userRepository.save(user)
+    const user: User = await prisma.user.create({data})
 
     return userSchemaResponse.parse(user)
-
 }
 
 
