@@ -21,3 +21,20 @@ model User {
   birthdate String  @db.VarChar(8)
 
 }
+
+model Ads {
+  id          Int      @id @default(autoincrement())
+  brand       String   @db.VarChar(127)
+  model       String   @unique @db.VarChar(127)
+  year        DateTime @db.Date()
+  fuel        String   @db.VarChar(127)
+  mileage     String   @db.VarChar(127)
+  color       String   @db.VarChar(127)
+  fipe_table  String   @db.VarChar(127)
+  price       Int      @db.Integer()
+  description String   @db.Text()
+  cover_img   String   @db.VarChar(127)
+  is_active   Boolean  @default(true)
+
+  @@map("ads")
+}
