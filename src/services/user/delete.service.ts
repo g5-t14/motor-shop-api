@@ -1,23 +1,27 @@
-import { Repository } from "typeorm"
-import { AppDataSource } from "../../data-source"
-import { User } from "../../entities/user.entity"
+import { User } from "@prisma/client"
+import { prisma } from "../../server"
 
 
 
 const deleteUserService = async (userId: string): Promise<void> => {
 
-    const userRepository: Repository<User> = AppDataSource.getRepository(User)
-
-    const user: User | null = await userRepository.findOneBy({
-        id: parseInt(userId)
+    const findUser: User | null = await prisma.user.findFirst({
+        where:{
+             id: parseInt(userId)
+        }
     })
 
-    if(!user){
+    if(!findUser){
         throw new Error("User not found")
     }
 
-    await userRepository.remove(user)
-
+    
+    await prisma.user.delete({
+        where:{
+            id: parseInt(userId)
+        }
+    })
+    
 }
 
 

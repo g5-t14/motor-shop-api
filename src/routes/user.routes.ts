@@ -5,7 +5,7 @@ import { updateUserController } from "../controllers/user/update.controller"
 import { deleteUserController } from "../controllers/user/delete.controller"
 
 
-const userRoutes = Router()
+const userRoutes = Router() 
 
 
 userRoutes.post("", createUserController)

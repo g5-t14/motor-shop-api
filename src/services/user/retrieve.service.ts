@@ -1,6 +1,5 @@
-import { Repository } from "typeorm"
-import { AppDataSource } from "../../data-source"
-import { User } from "../../entities/user.entity"
+import { prisma } from "../../server"
+import { User } from "@prisma/client"
 import { TUserResponse } from "../../interfaces/user.interfaces"
 import { userSchemaResponse } from "../../schemas/user.schema"
 
@@ -8,11 +7,10 @@ import { userSchemaResponse } from "../../schemas/user.schema"
 
 const retrieveUserService = async (userId: string): Promise<TUserResponse> => {
 
-    const userRepository: Repository<User> = AppDataSource.getRepository(User)
-
-
-    const user: User | null = await userRepository.findOneBy({
-        id: parseInt(userId)
+    const user: User | null = await prisma.user.findFirst({
+        where: {
+            id: parseInt(userId)
+        }
     })
 
     if(!user){
