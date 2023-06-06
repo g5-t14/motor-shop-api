@@ -8,18 +8,16 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  
 }
 
 model User {
-  id    Int         @id @default(autoincrement())
-  name  String      @db.VarChar(127)
-  email String      @db.VarChar(127) @unique
-  password String   @db.VarChar(60)
-  cpf String        @db.VarChar(11)  @unique
-  phone String      @db.VarChar(11)
-  birthdate String  @db.VarChar(8)
-
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(127)
+  email     String @unique @db.VarChar(127)
+  password  String @db.VarChar(60)
+  cpf       String @unique @db.VarChar(11)
+  phone     String @db.VarChar(11)
+  birthdate String @db.VarChar(8)
 }
 
 model Ads {
@@ -29,7 +27,7 @@ model Ads {
   year        DateTime @db.Date()
   fuel        String   @db.VarChar(127)
   mileage     String   @db.VarChar(127)
-  color       String   @db.VarChar(127)
+  color       Colors   @default(ANIL)
   fipe_table  String   @db.VarChar(127)
   price       Int      @db.Integer()
   description String   @db.Text()
@@ -37,4 +35,16 @@ model Ads {
   is_active   Boolean  @default(true)
 
   @@map("ads")
+}
+
+enum Colors {
+  PRETO
+  BRANCO
+  VERMELHO
+  LARANJA
+  AMARELO
+  VERDE
+  AZUL
+  ANIL
+  VIOLETA
 }
