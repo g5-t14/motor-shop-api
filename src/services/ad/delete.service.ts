@@ -8,6 +8,7 @@ const deleteAdService = async (id: number) => {
   });
 
   return ad;
+
 };
 
 export { deleteAdService };
