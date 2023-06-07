@@ -1,7 +1,11 @@
+import { TManyAdResponse } from "../../interfaces/ad.interfaces";
+import { manyAdsSchemaResponse } from "../../schemas/ad.schema";
 import { prisma } from "../../server";
 
-export async function listAllService() {
+const listAllAdService = async (): Promise<TManyAdResponse> => {
   const ads = prisma.ads.findMany();
 
-  return ads;
-}
+  return manyAdsSchemaResponse.parse(ads);
+};
+
+export { listAllAdService };

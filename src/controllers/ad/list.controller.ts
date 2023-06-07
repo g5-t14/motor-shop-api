@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
-import { listAllService } from "../../services/ad/list.service";
+import { listAllAdService } from "../../services/ad/list.service";
+import { TManyAdResponse } from "../../interfaces/ad.interfaces";
 
-export async function listAllController(req: Request, res: Response): Promise<Response> {
-    const allAds = await listAllService();
-    return res.json(allAds);
-}
+const listAllAdController = async (req: Request, res: Response): Promise<Response> => {
+  const allAds: TManyAdResponse = await listAllAdService();
+  return res.json(allAds);
+};
+
+export { listAllAdController };
