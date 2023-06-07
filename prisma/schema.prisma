@@ -23,7 +23,7 @@ model User {
 model Ads {
   id          Int      @id @default(autoincrement())
   brand       String   @db.VarChar(127)
-  model       String   @unique @db.VarChar(127)
+  model       String   @db.VarChar(127)
   year        DateTime @db.Date()
   fuel        String   @db.VarChar(127)
   mileage     String   @db.VarChar(127)
