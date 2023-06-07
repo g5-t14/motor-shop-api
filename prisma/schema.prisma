@@ -28,7 +28,7 @@ model Ads {
   fuel        String   @db.VarChar(127)
   mileage     String   @db.VarChar(127)
   color       Colors   @default(ANIL)
-  fipe_table  String   @db.VarChar(127)
+  fipe_table  Int      @db.Integer()
   price       Int      @db.Integer()
   description String   @db.Text()
   cover_img   String   @db.VarChar(127)

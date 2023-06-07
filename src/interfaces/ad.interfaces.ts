@@ -16,6 +16,4 @@ export {
   TAdRequest,
   TAdResponse,
   TAdUpdateRequest,
-  TManyAdResponse
-}
 
