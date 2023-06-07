@@ -10,6 +10,8 @@ const adRoutes: Router = Router();
 adRoutes.post("");
 adRoutes.patch("/:id", updateAdController);
 adRoutes.post("", createAdController);
+adRoutes.patch("/:id", updateAdController);
+adRoutes.post("",createAdController);
 adRoutes.get("", listAllAdController);
 adRoutes.get("/:id", findOneAdController);
 adRoutes.delete("/:id", deleteAdController);
