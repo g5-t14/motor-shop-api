@@ -5,10 +5,10 @@ import { prisma } from "../../server";
 
 export const updateAdService = async (
   data: TAdUpdateRequest,
-  userId: string
+  adId: string
 ): Promise<TAdResponse> => {
   const adsUpdated = await prisma.user.update({
-    where: { id: parseInt(userId) },
+    where: { id: parseInt(adId) },
     data: { ...data },
   });
 
