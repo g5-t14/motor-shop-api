@@ -1,11 +1,13 @@
 import { prisma } from "../../server";
 
-export const deleteAdService = async (id: number) => {
-  const ad = await prisma.ads.deleteMany({
+const deleteAdService = async (id: number) => {
+  const ad = await prisma.ads.delete({
     where: {
-      id: id,
+      id,
     },
   });
 
   return ad;
 };
+
+export { deleteAdService };
