@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { TAdRequest, TAdResponse } from "../../interfaces/ad.interfaces";
 import { createAdService } from "../../services/ad/create.service";
 
-const createAdController = async(req: Request, res: Response): Promise<Response> => {
+export const createAdController = async(req: Request, res: Response): Promise<Response> => {
   const adData: TAdRequest = req.body
 
   const newDate: Date = new Date()
@@ -13,5 +13,3 @@ const createAdController = async(req: Request, res: Response): Promise<Response>
 
   return res.status(201).json(newAd)
 }
-
-export { createAdController }

@@ -1,16 +1,24 @@
-import { Ads } from "@prisma/client";
-import { TAdResponse, TAdUpdateRequest } from "../../interfaces/ad.interfaces";
-import { adSchemaResponse } from "../../schemas/ad.schema";
+import { AppError } from "../../errors/errors";
+import { TAdRequest, TAdResponse } from "../../interfaces/ad.interfaces";
 import { prisma } from "../../server";
 
-export const updateAdService = async (
-  data: TAdUpdateRequest,
-  adId: string
-): Promise<TAdResponse> => {
-  const adsUpdated = await prisma.user.update({
-    where: { id: parseInt(adId) },
-    data: { ...data },
-  });
 
-  return adSchemaResponse.parse(adsUpdated);
-};
+export const updateAdService = async (data:TAdRequest, adId:number): Promise<TAdResponse> => {
+  const oldDataAd = await prisma.ads.findUnique({
+    where: {id:adId}
+  })
+
+  if(!oldDataAd){
+    throw new AppError("Ad not found",404)
+  }
+
+  const newData:TAdRequest = {...oldDataAd,...data}
+
+  const updatedAd:TAdResponse = await prisma.ads.update({
+    where: {id: adId},
+    data: {...newData}
+  },
+  )
+  
+  return updatedAd
+}
