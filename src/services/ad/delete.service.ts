@@ -1,13 +1,20 @@
+import { AppError } from "../../errors/errors";
 import { prisma } from "../../server";
 
-const deleteAdService = async (id: number) => {
-  const ad = await prisma.ads.delete({
+export const deleteAdService = async (id: number): Promise<void> => {
+  const ad = await prisma.ads.findUnique({where: {id}})
+
+  if(!ad){
+    throw new AppError("Ad not found!")
+  }
+  
+  const adDeleted = await prisma.ads.delete({
     where: {
       id,
     },
   });
+  
 
-  return ad;
+  return
 };
 
-export { deleteAdService };

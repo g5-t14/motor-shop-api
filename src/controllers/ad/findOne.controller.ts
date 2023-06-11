@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { findOneAdService } from "../../services/ad/findOne.service";
+import { TAdResponse } from "../../interfaces/ad.interfaces";
 
-const findOneAdController = async (req: Request, res: Response): Promise<Response> => {
+export const findOneAdController = async (req: Request, res: Response): Promise<Response> => {
   const userId: number = parseInt(req.params.id);
-  const ad = await findOneAdService(userId);
+  const ad: TAdResponse = await findOneAdService(userId);
 
-  return res.json(ad);
+  return res.status(200).json(ad);
 };
 
-export { findOneAdController };
