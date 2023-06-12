@@ -1,5 +1,6 @@
 import { User } from "@prisma/client"
 import { prisma } from "../../server"
+import { AppError } from "../../errors/errors"
 
 
 
@@ -12,7 +13,7 @@ const deleteUserService = async (userId: string): Promise<void> => {
     })
 
     if(!findUser){
-        throw new Error("User not found")
+        throw new AppError("User not found", 404)
     }
 
     

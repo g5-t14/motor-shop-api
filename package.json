@@ -33,7 +33,6 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
-    "typeorm": "^0.3.16",
     "zod": "^3.21.4"
   },
   "devDependencies": {

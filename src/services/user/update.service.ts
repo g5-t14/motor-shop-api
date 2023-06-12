@@ -2,6 +2,7 @@ import { User } from "@prisma/client"
 import { TUserResponse, TUserUpdateRequest } from "../../interfaces/user.interfaces"
 import { userSchemaResponse } from "../../schemas/user.schema"
 import { prisma } from "../../server"
+import { AppError } from "../../errors/errors"
 
 
 const updateUserService = async (data: TUserUpdateRequest, userId: string): Promise<TUserResponse> => {
@@ -13,7 +14,7 @@ const updateUserService = async (data: TUserUpdateRequest, userId: string): Prom
     })
 
     if(!user){
-        throw new Error("User not found")
+        throw new AppError("User not found", 404)
     }
 
     const userUpdated = await prisma.user.update({
