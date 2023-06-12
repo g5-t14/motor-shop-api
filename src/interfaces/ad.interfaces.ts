@@ -3,7 +3,6 @@ import {
   adSchema,
   adSchemaRequest,
   adSchemaResponse,
-  adSchemaUpdate,
   manyAdsSchemaResponse,
 } from "../schemas/ad.schema";
 
@@ -15,6 +14,6 @@ type TAdResponse = z.infer<typeof adSchemaResponse>;
 
 type TManyAdResponse = z.infer<typeof manyAdsSchemaResponse>;
 
-type TAdUpdateRequest = z.infer<typeof adSchemaUpdate>;
+type TAdUpdateRequest = Partial<TAdRequest>;
 
 export { TAd, TAdRequest, TAdResponse, TAdUpdateRequest, TManyAdResponse };
