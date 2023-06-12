@@ -2,11 +2,12 @@ import { prisma }  from "../../server"
 import { User } from "@prisma/client"
 import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces"
 import { userSchemaResponse } from "../../schemas/user.schema"
+import { AppError } from "../../errors/errors"
 
 
 const createUserService = async (data: TUserRequest): Promise<TUserResponse> => {
 
-    const { email, password } = data
+    const { email } = data
 
     const findUser: User | null = await prisma.user.findFirst({
         where: {
@@ -14,9 +15,8 @@ const createUserService = async (data: TUserRequest): Promise<TUserResponse> => 
         }
     })
     
-    
     if(findUser){
-        throw new Error("User already exists!")
+        throw new AppError("User already exists!", 409)
     }
 
 
