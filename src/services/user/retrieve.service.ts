@@ -6,7 +6,7 @@ import { AppError } from "../../errors/errors"
 
 
 
-const retrieveUserService = async (userId: string): Promise<TUserResponse> => {
+export const retrieveUserService = async (userId: string): Promise<TUserResponse> => {
 
     const user: User | null = await prisma.user.findFirst({
         where: {
@@ -21,6 +21,3 @@ const retrieveUserService = async (userId: string): Promise<TUserResponse> => {
     return userSchemaResponse.parse(user)
 
 }
-
-
-export { retrieveUserService }

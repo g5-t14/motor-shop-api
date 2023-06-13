@@ -4,7 +4,7 @@ import { TUserResponse } from "../../interfaces/user.interfaces"
 
 
 
-const retrieveUserController = async (req: Request, res: Response) => {
+export const retrieveUserController = async (req: Request, res: Response): Promise<Response> => {
 
     const userId: string = req.params.id
 
@@ -13,6 +13,3 @@ const retrieveUserController = async (req: Request, res: Response) => {
     return res.json(user)
 
 }
-
-
-export {retrieveUserController}

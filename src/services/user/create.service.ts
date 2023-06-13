@@ -5,7 +5,7 @@ import { userSchemaResponse } from "../../schemas/user.schema"
 import { AppError } from "../../errors/errors"
 
 
-const createUserService = async (data: TUserRequest): Promise<TUserResponse> => {
+export const createUserService = async (data: TUserRequest): Promise<TUserResponse> => {
 
     const { email } = data
 
@@ -24,6 +24,3 @@ const createUserService = async (data: TUserRequest): Promise<TUserResponse> => 
 
     return userSchemaResponse.parse(user)
 }
-
-
-export { createUserService }
