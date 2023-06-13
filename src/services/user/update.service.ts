@@ -5,7 +5,7 @@ import { prisma } from "../../server"
 import { AppError } from "../../errors/errors"
 
 
-const updateUserService = async (data: TUserUpdateRequest, userId: string): Promise<TUserResponse> => {
+export const updateUserService = async (data: TUserUpdateRequest, userId: string): Promise<TUserResponse> => {
 
     const user: User | null = await prisma.user.findFirst({
         where: {
@@ -25,6 +25,3 @@ const updateUserService = async (data: TUserUpdateRequest, userId: string): Prom
     return userSchemaResponse.parse(userUpdated)
 
 }
-
-
-export { updateUserService }

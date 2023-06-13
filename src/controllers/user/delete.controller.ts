@@ -3,7 +3,7 @@ import { deleteUserService } from "../../services/user/delete.service"
 
 
 
-const deleteUserController = async (req: Request, res: Response) => {
+export const deleteUserController = async (req: Request, res: Response): Promise<Response> => {
 
     const userId: string = req.params.id
 
@@ -12,6 +12,3 @@ const deleteUserController = async (req: Request, res: Response) => {
     return res.json(deleteUser)
 
 }
-
-
-export { deleteUserController }

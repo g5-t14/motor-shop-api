@@ -4,7 +4,7 @@ import { AppError } from "../../errors/errors"
 
 
 
-const deleteUserService = async (userId: string): Promise<void> => {
+export const deleteUserService = async (userId: string): Promise<void> => {
 
     const findUser: User | null = await prisma.user.findFirst({
         where:{
@@ -24,7 +24,3 @@ const deleteUserService = async (userId: string): Promise<void> => {
     })
     
 }
-
-
-
-export { deleteUserService }

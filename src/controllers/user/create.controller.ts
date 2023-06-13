@@ -4,7 +4,7 @@ import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces"
 
 
 
-const createUserController = async (req: Request, res: Response) => {
+export const createUserController = async (req: Request, res: Response): Promise<Response> => {
 
     const data: TUserRequest = req.body
 
@@ -14,5 +14,3 @@ const createUserController = async (req: Request, res: Response) => {
 
 }
 
-
-export { createUserController }
