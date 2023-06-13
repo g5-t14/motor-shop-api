@@ -3,7 +3,6 @@ import { prisma } from "../server"
 
 const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFunction) => {
 
-
     const adId: string = req.params.id
     const userId: string = res.locals.userId
 
@@ -22,7 +21,7 @@ const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFu
         })
     }
 
-    if (ad.user_id.toString() !== userId) {
+    if (ad.user_id != parseInt(userId)) {
         return res.status(403).json({
             message: "You don`t have permissions"
         })

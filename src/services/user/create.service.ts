@@ -19,5 +19,6 @@ export const createUserService = async (data: TUserRequest): Promise<TUserRespon
 
   const user: Users = await prisma.users.create({ data });
 
+
   return userSchemaResponse.parse(user);
 };

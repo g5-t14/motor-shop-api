@@ -11,6 +11,6 @@ export const updateUserController = async (req: Request, res: Response): Promise
 
     const updatedUser: TUserResponse = await updateUserService(updatedValues, userId)
 
-    return res.json(updatedUser)
+    return res.status(201).json(updatedUser)
 
 }
