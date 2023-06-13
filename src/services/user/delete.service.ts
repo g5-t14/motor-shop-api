@@ -1,4 +1,4 @@
-import { User } from "@prisma/client"
+import { Users } from "@prisma/client"
 import { prisma } from "../../server"
 import { AppError } from "../../errors/errors"
 
@@ -6,7 +6,7 @@ import { AppError } from "../../errors/errors"
 
 export const deleteUserService = async (userId: string): Promise<void> => {
 
-    const findUser: User | null = await prisma.user.findFirst({
+    const findUser: Users | null = await prisma.users.findFirst({
         where:{
              id: parseInt(userId)
         }
@@ -17,7 +17,7 @@ export const deleteUserService = async (userId: string): Promise<void> => {
     }
 
     
-    await prisma.user.delete({
+    await prisma.users.delete({
         where:{
             id: parseInt(userId)
         }
