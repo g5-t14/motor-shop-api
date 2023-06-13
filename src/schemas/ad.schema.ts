@@ -23,6 +23,7 @@ const adSchema = z.object({
   description: z.string(),
   cover_img: z.string(),
   is_active: z.boolean(),
+  user_id: z.number()
 });
 
 const adSchemaRequest = adSchema.omit({

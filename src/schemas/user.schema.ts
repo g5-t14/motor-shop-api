@@ -13,7 +13,7 @@ const userSchema = z.object({
   phone: z.string().max(11),
   birthdate: z.string().max(8),
   description: z.string().nullable(),
-  is_seller: z.boolean().default(false)
+  is_seller: z.boolean()
 });
 
 const userSchemaRequest = userSchema.omit({

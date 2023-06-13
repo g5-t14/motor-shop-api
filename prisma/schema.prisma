@@ -18,8 +18,8 @@ model User {
   cpf         String    @unique @db.VarChar(11)
   phone       String    @db.VarChar(11)
   birthdate   String    @db.VarChar(8)
-  description String?    @db.Text()
-  is_seller   Boolean?   @default(false) @db.Boolean()
+  description String   @db.Text()
+  is_seller   Boolean   @db.Boolean()
   address     Adresses?
   ads         Ads[]
 
