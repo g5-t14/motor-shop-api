@@ -8,7 +8,7 @@ import { Users } from "@prisma/client";
 
 
 
-const createTokenService = async ({ email, password }: TLoginRequest): Promise<string> => {
+export const createTokenService = async ({ email, password }: TLoginRequest): Promise<string> => {
 
 
     const user: Users | null = await prisma.users.findFirst({
@@ -39,6 +39,3 @@ const createTokenService = async ({ email, password }: TLoginRequest): Promise<s
     return token
 
 }
-
-
-export { createTokenService }
