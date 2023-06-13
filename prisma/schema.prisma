@@ -10,34 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id          Int       @id @default(autoincrement())
-  name        String    @db.VarChar(127)
-  email       String    @unique @db.VarChar(127)
-  password    String    @db.VarChar(60)
-  cpf         String    @unique @db.VarChar(11)
-  phone       String    @db.VarChar(11)
-  birthdate   String    @db.VarChar(8)
-  description String   @db.Text()
-  is_seller   Boolean   @db.Boolean()
-  address     Adresses?
+model Users {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(127)
+  email       String  @unique @db.VarChar(127)
+  password    String  @db.VarChar(60)
+  cpf         String  @unique @db.VarChar(11)
+  phone       String  @db.VarChar(11)
+  birthdate   String  @db.VarChar(8)
+  description String  @db.Text()
+  is_seller   Boolean @db.Boolean()
+  cep         String  @db.VarChar(8)
+  slate       String  @db.VarChar(127)
+  city        String  @db.VarChar(127)
+  street      String  @db.VarChar(127)
+  number      String  @db.VarChar(127)
+  complement  String  @db.VarChar(127)
   ads         Ads[]
 
   @@map("users")
-}
-
-model Adresses {
-  id         Int     @id @default(autoincrement())
-  cep        String  @db.VarChar(8)
-  slate      String  @db.VarChar(127)
-  city       String  @db.VarChar(127)
-  street     String  @db.VarChar(127)
-  number     String  @db.VarChar(127)
-  complement String? @db.VarChar(127)
-  user       User    @relation(fields: [user_id], references: [id])
-  user_id    Int     @unique
-
-  @@map("addresses")
 }
 
 model Ads {
@@ -53,7 +44,7 @@ model Ads {
   description String   @db.Text()
   cover_img   String   @db.VarChar(127)
   is_active   Boolean  @default(true)
-  user        User     @relation(fields: [user_id], references: [id])
+  user        Users    @relation(fields: [user_id], references: [id])
   user_id     Int
 
   @@map("ads")

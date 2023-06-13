@@ -1,5 +1,5 @@
 import { hashSync } from "bcryptjs";
-import { boolean, z } from "zod";
+import { z } from "zod";
 
 const userSchema = z.object({
   id: z.number(),
@@ -12,8 +12,14 @@ const userSchema = z.object({
   cpf: z.string().max(11),
   phone: z.string().max(11),
   birthdate: z.string().max(8),
-  description: z.string().nullable(),
-  is_seller: z.boolean()
+  description: z.string(),
+  is_seller: z.boolean(),
+  cep: z.string().max(8),
+  slate: z.string().max(127),
+  city: z.string().max(127),
+  street: z.string().max(127),
+  number: z.string().max(127),
+  complement: z.string().max(127),
 });
 
 const userSchemaRequest = userSchema.omit({

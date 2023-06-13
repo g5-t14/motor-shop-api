@@ -1,5 +1,5 @@
 import { prisma } from "../../server"
-import { User } from "@prisma/client"
+import { Users } from "@prisma/client"
 import { TUserResponse } from "../../interfaces/user.interfaces"
 import { userSchemaResponse } from "../../schemas/user.schema"
 import { AppError } from "../../errors/errors"
@@ -8,7 +8,7 @@ import { AppError } from "../../errors/errors"
 
 export const retrieveUserService = async (userId: string): Promise<TUserResponse> => {
 
-    const user: User | null = await prisma.user.findFirst({
+    const user: Users | null = await prisma.users.findFirst({
         where: {
             id: parseInt(userId)
         }
