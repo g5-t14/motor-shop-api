@@ -9,6 +9,6 @@ export const deleteUserController = async (req: Request, res: Response): Promise
 
     const deleteUser: void = await deleteUserService(userId)
 
-    return res.json(deleteUser)
+    return res.status(204).json(deleteUser)
 
 }
