@@ -1,33 +1,30 @@
-import { Request, Response, NextFunction } from "express"
-import { prisma } from "../server"
+import { Request, Response, NextFunction } from "express";
+import { prisma } from "../server";
 
-const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+export const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const adId: number = Number(req.params.id);
+  const userId: number = Number(res.locals.userId);
 
-    const adId: string = req.params.id
-    const userId: string = res.locals.userId
+  const ad = await prisma.ads.findFirst({
+    where: {
+      id: adId,
+    },
+    include: {
+      user: true,
+    },
+  });
 
-    const ad = await prisma.ads.findFirst({
-        where: {
-            id: parseInt(adId),
-        },
-        include: {
-            user: true
-        }
-    })
+  if (!ad) {
+    return res.status(404).json({
+      message: "Ad not found",
+    });
+  }
 
-    if (!ad) {
-        return res.status(404).json({
-            message: "Task not found"
-        })
-    }
+  if (ad.user_id !== userId) {
+    return res.status(403).json({
+      message: "You don't have permissions",
+    });
+  }
 
-    if (ad.user_id != parseInt(userId)) {
-        return res.status(403).json({
-            message: "You don`t have permissions"
-        })
-    }
-
-    return next()
-}
-
-export { ensureIsOwnerMiddleware }
+  return next();
+};

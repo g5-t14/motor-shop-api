@@ -1,14 +1,10 @@
-import { Request, Response } from "express"
-import { deleteUserService } from "../../services/user/delete.service"
-
-
+import { Request, Response } from "express";
+import { deleteUserService } from "../../services/user/delete.service";
 
 export const deleteUserController = async (req: Request, res: Response): Promise<Response> => {
+  const userId: number = Number(req.params.id);
 
-    const userId: string = req.params.id
+  await deleteUserService(userId);
 
-    const deleteUser: void = await deleteUserService(userId)
-
-    return res.status(204).json(deleteUser)
-
-}
+  return res.status(204).json();
+};
