@@ -1,11 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { prisma } from "../server";
+import { AppError } from "../errors/errors";
 
 export const ensureIsOwnerUserMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const userId: number = Number(req.params.id);
   const userLocal: number = Number(res.locals.userId)
-
-  console.log(userId + "  " + userLocal);
 
   const user = await prisma.users.findFirst({
     where: {
@@ -14,15 +13,11 @@ export const ensureIsOwnerUserMiddleware = async (req: Request, res: Response, n
   });
 
   if (!user) {
-    return res.status(404).json({
-      message: "User not found",
-    });
+    throw new AppError("User not found", 404);
   }
 
   if (user.id !== userLocal) {
-    return res.status(403).json({
-      message: "You don't have permissions",
-    });
+    throw new AppError("You don't have permission", 403);
   }
 
   return next();
