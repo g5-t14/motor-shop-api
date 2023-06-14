@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { prisma } from "../server";
 
-const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  const adId: string = req.params.id;
-  const userId: string = res.locals.userId;
+export const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const adId: number = Number(req.params.id);
+  const userId: number = Number(res.locals.userId);
 
   const ad = await prisma.ads.findFirst({
     where: {
-      id: parseInt(adId),
+      id: adId,
     },
     include: {
       user: true,
@@ -16,17 +16,15 @@ const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFu
 
   if (!ad) {
     return res.status(404).json({
-      message: "Task not found",
+      message: "Ad not found",
     });
   }
 
-  if (ad.user_id.toString() !== userId) {
+  if (ad.user_id !== userId) {
     return res.status(403).json({
-      message: "You don`t have permissions",
+      message: "You don't have permissions",
     });
   }
 
   return next();
 };
-
-export { ensureIsOwnerMiddleware };

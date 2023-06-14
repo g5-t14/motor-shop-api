@@ -7,19 +7,16 @@ export const ensureauthMiddleware = (req: Request, res: Response, next: NextFunc
 
   if (!token) {
     return res.status(401).json({
-      message: "invalid token",
+      message: "Invalid token",
     });
   }
 
   const splitToken = token.split(" ")[1];
 
-  jwt.verify(
-    splitToken,
-    process.env.SECRET_KEY!,
-    (error: any, decoded: any) => {
+  jwt.verify(splitToken, process.env.SECRET_KEY!, (error: any, decoded: any) => {
       if (error) {
         return res.status(401).json({
-          message: "invalid token",
+          message: "Invalid token",
         });
       }
 
