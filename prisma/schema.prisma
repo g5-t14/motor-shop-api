@@ -25,7 +25,8 @@ model Users {
   city        String  @db.VarChar(127)
   street      String  @db.VarChar(127)
   number      String  @db.VarChar(127)
-  complement  String @db.VarChar(127)
+  complement  String  @db.VarChar(127)
+  user_color  String  @db.VarChar(7)
   ads         Ads[]
 
   @@map("users")
@@ -38,7 +39,7 @@ model Ads {
   year        DateTime @db.Date()
   fuel        String   @db.VarChar(127)
   mileage     String   @db.VarChar(127)
-  color       Colors   @default(ANIL)
+  color       Colors   @default(Cinza)
   fipe_table  Int      @db.Integer()
   price       Int      @db.Integer()
   description String   @db.Text()
@@ -51,13 +52,17 @@ model Ads {
 }
 
 enum Colors {
-  PRETO
-  BRANCO
-  VERMELHO
-  LARANJA
-  AMARELO
-  VERDE
-  AZUL
-  ANIL
-  VIOLETA
+  Preto
+  Cinza
+  Marrom
+  Vermelho
+  Laranja
+  Amarelo
+  VerdeClaro
+  VerdeEscuro
+  AzulClaro
+  AzulEscuro
+  Roxo
+  Rosa
+  Branco
 }
