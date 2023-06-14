@@ -2,7 +2,7 @@ import { ensureauthMiddleware } from "./ensureAuth.middleware";
 import { ensureCpfExistsMiddleware } from "./ensureCpfExists.middleware";
 import { ensureDataIsValidMiddleware } from "./ensureDataIsValid.middleware";
 import { ensureEmailExistsMiddleware } from "./ensureEmailExists.middleware";
-import { ensureIsOwnerMiddleware } from "./ensureIsOwner.middleware";
+import { ensureIsOwnerAdMiddleware } from "./ensureIsOwnerAd.middleware";
 import { ensureUserExistsMiddleware } from "./ensureUserExists.middleware";
 
 export {
@@ -10,6 +10,6 @@ export {
   ensureCpfExistsMiddleware,
   ensureDataIsValidMiddleware,
   ensureEmailExistsMiddleware,
-  ensureIsOwnerMiddleware,
+  ensureIsOwnerAdMiddleware,
   ensureUserExistsMiddleware,
 };

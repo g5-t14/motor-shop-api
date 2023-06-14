@@ -1,10 +1,15 @@
-import { TManyAdResponse } from "../../interfaces/ad.interfaces";
+import { Ads } from "@prisma/client";
 import { prisma } from "../../server";
+import { manyAdsSchemaResponse } from "../../schemas/ad.schema";
 
-export const listAllAdService = async (): Promise<TManyAdResponse> => {
-  const ads = prisma.ads.findMany();
+export const listAllAdService = async (userId: number): Promise<Ads[]> => {
+  const ads: Ads[] = await prisma.ads.findMany({
+    where: {
+      user_id: userId
+    }
+  })
 
-  return ads;
+  return manyAdsSchemaResponse.parse(ads)
 }
 
 

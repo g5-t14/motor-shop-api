@@ -1,11 +1,13 @@
+import { Ads } from "@prisma/client";
 import { AppError } from "../../errors/errors";
 import { TAdResponse } from "../../interfaces/ad.interfaces";
 import { prisma } from "../../server";
+import { adSchemaResponse } from "../../schemas/ad.schema";
 
-export const findOneAdService = async (id: number):Promise<TAdResponse> => {
-  const ad = await prisma.ads.findUnique({
+export const findOneAdService = async (adId: number):Promise<TAdResponse> => {
+  const ad: Ads | null = await prisma.ads.findUnique({
     where: {
-      id: id,
+      id: adId,
     },
   });
   
@@ -13,6 +15,6 @@ export const findOneAdService = async (id: number):Promise<TAdResponse> => {
     throw new AppError("Ad not found!",404)
   }
 
-  return ad;
+  return adSchemaResponse.parse(ad);
 }
 
