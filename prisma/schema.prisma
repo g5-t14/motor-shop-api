@@ -25,7 +25,7 @@ model Users {
   city        String  @db.VarChar(127)
   street      String  @db.VarChar(127)
   number      String  @db.VarChar(127)
-  complement  String  @db.VarChar(127)
+  complement  String @db.VarChar(127)
   ads         Ads[]
 
   @@map("users")

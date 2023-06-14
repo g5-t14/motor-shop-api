@@ -31,7 +31,7 @@ export const createTokenService = async ({ email, password }: TLoginRequest): Pr
         { userName: user.name },
         process.env.SECRET_KEY!,
         {
-            expiresIn: "1h",
+            expiresIn: process.env.EXPIRES_IN,
             subject: user.id.toString()
         }
     )
