@@ -4,7 +4,7 @@ const adSchema = z.object({
   id: z.number(),
   brand: z.string(),
   model: z.string(),
-  year: z.date(),
+  year: z.string(),
   fuel: z.string(),
   mileage: z.string(),
   color: z.enum([
@@ -32,14 +32,17 @@ const adSchema = z.object({
 
 const adSchemaRequest = adSchema.omit({
   id: true,
-  user_id: true
+  user_id: true,
 });
 
 const adSchemaResponse = adSchema;
 
 const manyAdsSchemaResponse = z.array(adSchemaResponse);
 
-const adSchemaUpdate = adSchema.partial();
+const adSchemaUpdate = adSchema.partial().omit({
+  id: true,
+  user_id: true,
+});
 
 export {
   adSchema,

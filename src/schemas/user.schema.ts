@@ -43,4 +43,10 @@ const userSchemaUpdate = userSchema
   })
   .partial();
 
-export { userSchema, userSchemaRequest, userSchemaColorRequest, userSchemaResponse, userSchemaUpdate };
+export {
+  userSchema,
+  userSchemaRequest,
+  userSchemaColorRequest,
+  userSchemaResponse,
+  userSchemaUpdate,
+};

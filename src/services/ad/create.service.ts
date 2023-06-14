@@ -4,7 +4,6 @@ import { prisma } from "../../server";
 import { adSchemaResponse } from "../../schemas/ad.schema";
 
 export const createAdService = async (data:TAdRequest, userId:number ) :Promise<TAdResponse> => {
-
   const ad: Ads = await prisma.ads.create({
     data: {...data, user_id: userId},
   },

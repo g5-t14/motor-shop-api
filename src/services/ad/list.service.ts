@@ -5,11 +5,14 @@ import { manyAdsSchemaResponse } from "../../schemas/ad.schema";
 export const listAllAdService = async (userId: number): Promise<Ads[]> => {
   const ads: Ads[] = await prisma.ads.findMany({
     where: {
-      user_id: userId
-    }
-  })
+      user_id: userId,
+    },
+    orderBy: [
+      {
+        id: "asc",
+      },
+    ],
+  });
 
-  return manyAdsSchemaResponse.parse(ads)
-}
-
-
+  return manyAdsSchemaResponse.parse(ads);
+};

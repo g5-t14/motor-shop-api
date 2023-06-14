@@ -33,19 +33,19 @@ model Users {
 }
 
 model Ads {
-  id          Int      @id @default(autoincrement())
-  brand       String   @db.VarChar(127)
-  model       String   @db.VarChar(127)
-  year        DateTime @db.Date()
-  fuel        String   @db.VarChar(127)
-  mileage     String   @db.VarChar(127)
-  color       Colors   @default(Cinza)
-  fipe_table  Int      @db.Integer()
-  price       Int      @db.Integer()
-  description String   @db.Text()
-  cover_img   String   @db.VarChar(127)
-  is_active   Boolean  @default(true)
-  user        Users    @relation(fields: [user_id], references: [id])
+  id          Int     @id @default(autoincrement())
+  brand       String  @db.VarChar(127)
+  model       String  @db.VarChar(127)
+  year        String  @db.VarChar(10)
+  fuel        String  @db.VarChar(127)
+  mileage     String  @db.VarChar(127)
+  color       Colors  @default(Cinza)
+  fipe_table  Int     @db.Integer()
+  price       Int     @db.Integer()
+  description String  @db.Text()
+  cover_img   String  @db.VarChar(127)
+  is_active   Boolean @default(true)
+  user        Users   @relation(fields: [user_id], references: [id])
   user_id     Int
 
   @@map("ads")

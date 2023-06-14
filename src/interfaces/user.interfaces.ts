@@ -1,4 +1,4 @@
-import {z} from "zod"
+import { z } from "zod";
 import {
   userSchema,
   userSchemaColorRequest,
@@ -10,10 +10,16 @@ type TUser = z.infer<typeof userSchema>;
 
 type TUserRequest = z.infer<typeof userSchemaRequest>;
 
-type TUserRequestWithColor = z.infer<typeof userSchemaColorRequest>
+type TUserRequestWithColor = z.infer<typeof userSchemaColorRequest>;
 
 type TUserResponse = z.infer<typeof userSchemaResponse>;
 
 type TUserUpdateRequest = Partial<TUserRequest>;
 
-export { TUser, TUserRequest, TUserRequestWithColor, TUserResponse, TUserUpdateRequest };
+export {
+  TUser,
+  TUserRequest,
+  TUserRequestWithColor,
+  TUserResponse,
+  TUserUpdateRequest,
+};

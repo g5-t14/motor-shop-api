@@ -1,11 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { prisma } from "../server";
+import { Ads } from "@prisma/client";
+import { AppError } from "../errors/errors";
 
 export const ensureIsOwnerAdMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const adId: number = Number(req.params.id);
   const userId: number = Number(res.locals.userId);
 
-  const ad = await prisma.ads.findFirst({
+  const ad: Ads | null = await prisma.ads.findFirst({
     where: {
       id: adId,
     },
@@ -15,15 +17,11 @@ export const ensureIsOwnerAdMiddleware = async (req: Request, res: Response, nex
   });
 
   if (!ad) {
-    return res.status(404).json({
-      message: "Ad not found",
-    });
+    throw new AppError("Ad not found", 404);
   }
 
   if (ad.user_id !== userId) {
-    return res.status(403).json({
-      message: "You don't have permissions",
-    });
+    throw new AppError("You don't have permission", 403);
   }
 
   return next();
