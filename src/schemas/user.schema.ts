@@ -20,9 +20,15 @@ const userSchema = z.object({
   street: z.string().max(127),
   number: z.string().max(127),
   complement: z.string().max(127),
+  user_color: z.string(),
 });
 
 const userSchemaRequest = userSchema.omit({
+  id: true,
+  user_color: true,
+});
+
+const userSchemaColorRequest = userSchema.omit({
   id: true,
 });
 
@@ -33,7 +39,8 @@ const userSchemaResponse = userSchema.omit({
 const userSchemaUpdate = userSchema
   .omit({
     id: true,
+    user_color: true,
   })
   .partial();
 
-export { userSchema, userSchemaRequest, userSchemaResponse, userSchemaUpdate };
+export { userSchema, userSchemaRequest, userSchemaColorRequest, userSchemaResponse, userSchemaUpdate };

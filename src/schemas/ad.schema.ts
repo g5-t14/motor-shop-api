@@ -8,22 +8,26 @@ const adSchema = z.object({
   fuel: z.string(),
   mileage: z.string(),
   color: z.enum([
-    "PRETO",
-    "BRANCO",
-    "VERMELHO",
-    "LARANJA",
-    "AMARELO",
-    "VERDE",
-    "AZUL",
-    "ANIL",
-    "VIOLETA",
+    "Preto",
+    "Cinza",
+    "Marrom",
+    "Vermelho",
+    "Laranja",
+    "Amarelo",
+    "VerdeClaro",
+    "VerdeEscuro",
+    "AzulClaro",
+    "AzulEscuro",
+    "Roxo",
+    "Rosa",
+    "Branco",
   ]),
   fipe_table: z.number(),
   price: z.number(),
   description: z.string(),
   cover_img: z.string(),
   is_active: z.boolean(),
-  user_id: z.number()
+  user_id: z.number(),
 });
 
 const adSchemaRequest = adSchema.omit({
@@ -47,4 +51,3 @@ export {
   adSchemaUpdate,
   manyAdsSchemaResponse,
 };
-
