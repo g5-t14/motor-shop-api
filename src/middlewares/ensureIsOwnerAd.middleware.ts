@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { prisma } from "../server";
 
-export const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+export const ensureIsOwnerAdMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const adId: number = Number(req.params.id);
   const userId: number = Number(res.locals.userId);
 

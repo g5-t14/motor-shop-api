@@ -2,8 +2,7 @@ import { Router } from "express"
 import { createTokenController } from "../controllers/login/login.controller"
 
 
-const loginRoutes = Router()
+export const loginRoutes: Router = Router()
 
 loginRoutes.post("", createTokenController)
 
-export { loginRoutes }

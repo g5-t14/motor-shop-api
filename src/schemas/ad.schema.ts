@@ -28,17 +28,14 @@ const adSchema = z.object({
 
 const adSchemaRequest = adSchema.omit({
   id: true,
+  user_id: true
 });
 
 const adSchemaResponse = adSchema;
 
 const manyAdsSchemaResponse = z.array(adSchemaResponse);
 
-const adSchemaUpdate = adSchema
-  .omit({
-    id: true,
-  })
-  .partial();
+const adSchemaUpdate = adSchema.partial();
 
 export {
   adSchema,
