@@ -6,6 +6,7 @@ import { ensureEmailExistsMiddleware } from "./ensureEmailExists.middleware";
 import { ensureIsOwnerAdMiddleware } from "./ensureIsOwnerAd.middleware";
 import { ensureIsOwnerUserMiddleware } from "./ensureIsOwnerUser.middlewares";
 import { ensureUserExistsMiddleware } from "./ensureUserExists.middleware";
+import { ensureIsSellerMiddleware } from "./ensureIsSeller.middlewares";
 
 export {
   ensureAdExistsMiddleware,
@@ -16,4 +17,5 @@ export {
   ensureIsOwnerAdMiddleware,
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware,
+  ensureIsSellerMiddleware,
 };
