@@ -18,6 +18,7 @@ export const ensureAuthMiddleware = (req: Request, res: Response, next: NextFunc
       }
 
       res.locals.userId = decoded.sub;
+      res.locals.isSeller = decoded.isSeller
 
       return next();
     }

@@ -1,9 +1,12 @@
-import { PrismaClient } from '@prisma/client'
-import app from './app';
+import { PrismaClient } from "@prisma/client";
+import { app } from "./app";
 
-const prisma = new PrismaClient({ log: ["info", "query", "warn", "error"] })
+const port: number = 3000;
 
-app.listen(3000, () => console.log("Server is running!"))
+const prisma = new PrismaClient({ log: ["info", "query", "warn", "error"] });
 
+app.listen(port, () =>
+  console.log(`Server is running in: http://localhost:${port}`)
+);
 
-export { prisma }
+export { prisma };
