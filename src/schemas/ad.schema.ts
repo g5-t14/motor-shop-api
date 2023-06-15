@@ -37,27 +37,19 @@ const adSchemaRequest = adSchema.omit({
   user_id: true
 });
 
-const adSchemaRequestUpdate = adSchema.omit({
-  id: true,
-  user_id: true,
-  pictures: true
-});
-
 const adSchemaResponse = adSchema;
 
 const manyAdsSchemaResponse = z.array(adSchemaResponse);
 
-const adSchemaUpdate = adSchema.partial().omit({
+const adSchemaUpdate = adSchema.omit({
   id: true,
-  user_id: true,
-  pictures: true
-});
+  user_id: true
+}).partial();
 
 export {
   adSchema,
   adSchemaRequest,
   adSchemaResponse,
   adSchemaUpdate,
-  manyAdsSchemaResponse,
-  adSchemaRequestUpdate
+  manyAdsSchemaResponse
 };
