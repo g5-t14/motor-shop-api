@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { picturesSchemaRequest } from "./pictures.schema";
 
 const adSchema = z.object({
   id: z.number(),
@@ -27,12 +28,19 @@ const adSchema = z.object({
   description: z.string(),
   cover_img: z.string(),
   is_active: z.boolean(),
+  pictures: picturesSchemaRequest,
   user_id: z.number(),
 });
 
 const adSchemaRequest = adSchema.omit({
   id: true,
+  user_id: true
+});
+
+const adSchemaRequestUpdate = adSchema.omit({
+  id: true,
   user_id: true,
+  pictures: true
 });
 
 const adSchemaResponse = adSchema;
@@ -42,6 +50,7 @@ const manyAdsSchemaResponse = z.array(adSchemaResponse);
 const adSchemaUpdate = adSchema.partial().omit({
   id: true,
   user_id: true,
+  pictures: true
 });
 
 export {
@@ -50,4 +59,5 @@ export {
   adSchemaResponse,
   adSchemaUpdate,
   manyAdsSchemaResponse,
+  adSchemaRequestUpdate
 };
