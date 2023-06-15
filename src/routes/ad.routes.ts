@@ -11,16 +11,18 @@ import {
   createAdController,
   deleteAdController,
   findOneAdController,
-  listAllAdController,
+  listAllAdUserController,
+  listAllAdsController,
   updateAdController,
 } from "../controllers/ad";
 
 export const adRoutes: Router = Router();
 
-adRoutes.use(ensureAuthMiddleware, ensureIsSellerMiddleware)
-adRoutes.post("", ensureDataIsValidMiddleware(adSchemaRequest),createAdController);
-adRoutes.get("", listAllAdController);
-adRoutes.use("/:id", ensureAdExistsMiddleware, ensureIsOwnerAdMiddleware)
+adRoutes.get("", listAllAdsController)
 adRoutes.get("/:id", findOneAdController);
+adRoutes.get("/seller/:id", listAllAdUserController);
+adRoutes.use(ensureAuthMiddleware, ensureIsSellerMiddleware)
+adRoutes.post("", ensureDataIsValidMiddleware(adSchemaRequest), createAdController);
+adRoutes.use("/:id", ensureAdExistsMiddleware, ensureIsOwnerAdMiddleware)
 adRoutes.patch("/:id", ensureDataIsValidMiddleware(adSchemaUpdate), updateAdController);
 adRoutes.delete("/:id", deleteAdController);

@@ -6,5 +6,5 @@ export const findOneAdController = async (req: Request, res: Response): Promise<
   const adId: number = Number(req.params.id);
   const ad: TAdResponse = await findOneAdService(adId);
 
-  return res.status(200).json(ad);
+  return res.json(ad);
 };

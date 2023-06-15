@@ -46,7 +46,7 @@ model Ads {
   cover_img   String     @db.VarChar(127)
   is_active   Boolean    @default(true)
   pictures    Pictures?
-  user        Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_seller Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id     Int
 
   @@map("ads")

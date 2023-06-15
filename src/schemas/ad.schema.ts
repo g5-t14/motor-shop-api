@@ -29,35 +29,33 @@ const adSchema = z.object({
   cover_img: z.string(),
   is_active: z.boolean(),
   pictures: picturesSchemaRequest,
-  user_id: z.number(),
+  user_seller: z.object({
+    id: z.number(),
+    name: z.string(),
+    user_color: z.string()
+  }).nullish(),
 });
 
 const adSchemaRequest = adSchema.omit({
   id: true,
-  user_id: true
-});
-
-const adSchemaRequestUpdate = adSchema.omit({
-  id: true,
   user_id: true,
-  pictures: true
+  user_seller: true
 });
 
 const adSchemaResponse = adSchema;
 
 const manyAdsSchemaResponse = z.array(adSchemaResponse);
 
-const adSchemaUpdate = adSchema.partial().omit({
+const adSchemaUpdate = adSchema.omit({
   id: true,
   user_id: true,
-  pictures: true
-});
+  user_seller: true
+}).deepPartial();
 
 export {
   adSchema,
   adSchemaRequest,
   adSchemaResponse,
   adSchemaUpdate,
-  manyAdsSchemaResponse,
-  adSchemaRequestUpdate
+  manyAdsSchemaResponse
 };

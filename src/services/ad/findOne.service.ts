@@ -8,6 +8,10 @@ export const findOneAdService = async (adId: number): Promise<TAdResponse> => {
     where: {
       id: adId,
     },
+    include: {
+      pictures: true,
+      user_seller: true
+    }
   });
 
   return adSchemaResponse.parse(ad);
