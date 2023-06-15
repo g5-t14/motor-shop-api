@@ -9,7 +9,8 @@ export const findOneAdService = async (adId: number): Promise<TAdResponse> => {
       id: adId,
     },
     include: {
-      pictures: true
+      pictures: true,
+      user_seller: true
     }
   });
 

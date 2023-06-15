@@ -12,7 +12,7 @@ export const ensureIsOwnerAdMiddleware = async (req: Request, res: Response, nex
       id: adId,
     },
     include: {
-      user: true,
+      user_seller: true,
     },
   });
 
