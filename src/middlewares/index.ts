@@ -17,5 +17,5 @@ export {
   ensureIsOwnerAdMiddleware,
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware,
-  ensureIsSellerMiddleware
+  ensureIsSellerMiddleware,
 };
