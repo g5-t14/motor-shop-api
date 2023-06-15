@@ -5,6 +5,7 @@ import {
   ensureDataIsValidMiddleware,
   ensureIsOwnerAdMiddleware,
   ensureAuthMiddleware,
+  ensureIsSellerMiddleware,
 } from "../middlewares";
 import {
   createAdController,
@@ -16,7 +17,7 @@ import {
 
 export const adRoutes: Router = Router();
 
-adRoutes.use(ensureAuthMiddleware)
+adRoutes.use(ensureAuthMiddleware, ensureIsSellerMiddleware)
 adRoutes.post("", ensureDataIsValidMiddleware(adSchemaRequest),createAdController);
 adRoutes.get("", listAllAdController);
 adRoutes.use("/:id", ensureAdExistsMiddleware, ensureIsOwnerAdMiddleware)

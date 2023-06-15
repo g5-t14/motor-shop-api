@@ -24,7 +24,7 @@ export const createTokenService = async ({ email, password }: TLoginRequest): Pr
   }
 
   const token: string = jwt.sign(
-    { userName: user.name },
+    { isSeller: user.is_seller },
     process.env.SECRET_KEY!,
     {
       expiresIn: process.env.EXPIRES_IN,
