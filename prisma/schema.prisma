@@ -21,7 +21,7 @@ model Users {
   description String  @db.Text()
   is_seller   Boolean @db.Boolean()
   cep         String  @db.VarChar(8)
-  slate       String  @db.VarChar(127)
+  state       String  @db.VarChar(127)
   city        String  @db.VarChar(127)
   street      String  @db.VarChar(127)
   number      String  @db.VarChar(127)
@@ -33,22 +33,37 @@ model Users {
 }
 
 model Ads {
-  id          Int     @id @default(autoincrement())
-  brand       String  @db.VarChar(127)
-  model       String  @db.VarChar(127)
-  year        String  @db.VarChar(10)
-  fuel        String  @db.VarChar(127)
-  mileage     String  @db.VarChar(127)
-  color       Colors  @default(Cinza)
-  fipe_table  Int     @db.Integer()
-  price       Int     @db.Integer()
-  description String  @db.Text()
-  cover_img   String  @db.VarChar(127)
-  is_active   Boolean @default(true)
-  user        Users   @relation(fields: [user_id], references: [id])
+  id          Int        @id @default(autoincrement())
+  brand       String     @db.VarChar(127)
+  model       String     @db.VarChar(127)
+  year        String     @db.VarChar(10)
+  fuel        String     @db.VarChar(127)
+  mileage     String     @db.VarChar(127)
+  color       Colors     @default(Cinza)
+  fipe_table  Int        @db.Integer()
+  price       Int        @db.Integer()
+  description String     @db.Text()
+  pictures    Pictures[]
+  is_active   Boolean    @default(true)
+  user        Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id     Int
 
   @@map("ads")
+}
+
+model Pictures {
+  id        Int     @id @default(autoincrement())
+  cover_img String  @db.VarChar(127)
+  picture_1 String  @db.VarChar(127)
+  picture_2 String  @db.VarChar(127)
+  picture_3 String? @db.VarChar(127)
+  picture_4 String? @db.VarChar(127)
+  picture_5 String? @db.VarChar(127)
+  picture_6 String? @db.VarChar(127)
+  ad        Ads     @relation(fields: [ad_id], references: [id], onDelete: Cascade)
+  ad_id     Int
+
+  @@map("pictures")
 }
 
 enum Colors {
