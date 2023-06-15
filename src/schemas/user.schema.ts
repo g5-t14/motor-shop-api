@@ -15,7 +15,7 @@ const userSchema = z.object({
   description: z.string(),
   is_seller: z.boolean(),
   cep: z.string().max(8),
-  slate: z.string().max(127),
+  state: z.string().max(127),
   city: z.string().max(127),
   street: z.string().max(127),
   number: z.string().max(127),
