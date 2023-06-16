@@ -39,7 +39,8 @@ const adSchema = z.object({
 const adSchemaRequest = adSchema.omit({
   id: true,
   user_id: true,
-  user_seller: true
+  user_seller: true,
+  is_active: true
 });
 
 const adSchemaResponse = adSchema;
