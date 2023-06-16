@@ -44,7 +44,7 @@ model Ads {
   price       Int        @db.Integer()
   description String     @db.Text()
   cover_img   String     @db.VarChar(384)
-  is_active   Boolean    @default(true)
+  is_active   Boolean   @default(true)
   pictures    Pictures?
   user_seller Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id     Int
