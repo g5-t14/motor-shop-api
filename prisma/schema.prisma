@@ -43,7 +43,7 @@ model Ads {
   fipe_table  Int        @db.Integer()
   price       Int        @db.Integer()
   description String     @db.Text()
-  cover_img   String     @db.VarChar(127)
+  cover_img   String     @db.VarChar(384)
   is_active   Boolean    @default(true)
   pictures    Pictures?
   user_seller Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
@@ -54,12 +54,12 @@ model Ads {
 
 model Pictures {
   id        Int     @id @default(autoincrement())
-  picture_1 String  @db.VarChar(127)
-  picture_2 String  @db.VarChar(127)
-  picture_3 String? @db.VarChar(127)
-  picture_4 String? @db.VarChar(127)
-  picture_5 String? @db.VarChar(127)
-  picture_6 String? @db.VarChar(127)
+  picture_1 String  @db.VarChar(384)
+  picture_2 String  @db.VarChar(384)
+  picture_3 String? @db.VarChar(384)
+  picture_4 String? @db.VarChar(384)
+  picture_5 String? @db.VarChar(384)
+  picture_6 String? @db.VarChar(384)
   ad        Ads     @relation(fields: [ad_id], references: [id], onDelete: Cascade)
   ad_id     Int     @unique
 
