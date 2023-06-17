@@ -9,7 +9,7 @@ const userSchema = z.object({
     .string()
     .max(60)
     .transform((password) => hashSync(password, 10)),
-  reset_password: z.string().nullish(),
+  reset_password: z.string(),
   cpf: z.string().max(11),
   phone: z.string().max(11),
   birthdate: z.string().max(8),
@@ -27,6 +27,7 @@ const userSchema = z.object({
 const userSchemaRequest = userSchema.omit({
   id: true,
   user_color: true,
+  reset_password:true
 });
 
 const userSchemaColorRequest = userSchema.omit({
