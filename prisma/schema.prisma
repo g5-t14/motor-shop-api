@@ -15,6 +15,7 @@ model Users {
   name        String  @db.VarChar(127)
   email       String  @unique @db.VarChar(127)
   password    String  @db.VarChar(60)
+  reset_password String?
   cpf         String  @unique @db.VarChar(11)
   phone       String  @db.VarChar(11)
   birthdate   String  @db.VarChar(8)

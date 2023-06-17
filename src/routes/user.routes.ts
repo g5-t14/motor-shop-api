@@ -13,12 +13,32 @@ import {
   deleteUserController,
   retrieveUserController,
   updateUserController,
+  sendResetEmailPassword,
+  resetEmailPassword,
 } from "../controllers/user";
 
-export const userRoutes: Router = Router() 
+export const userRoutes: Router = Router();
 
-userRoutes.post("", ensureDataIsValidMiddleware(userSchemaRequest), ensureEmailExistsMiddleware, ensureCpfExistsMiddleware, createUserController);
-userRoutes.use("/:id", ensureAuthMiddleware, ensureUserExistsMiddleware, ensureIsOwnerUserMiddleware);
+userRoutes.post(
+  "",
+  ensureDataIsValidMiddleware(userSchemaRequest),
+  ensureEmailExistsMiddleware,
+  ensureCpfExistsMiddleware,
+  createUserController
+);
+userRoutes.use(
+  "/:id",
+  ensureAuthMiddleware,
+  ensureUserExistsMiddleware,
+  ensureIsOwnerUserMiddleware
+);
 userRoutes.get("/:id", retrieveUserController);
-userRoutes.patch("/:id", ensureEmailExistsMiddleware, ensureCpfExistsMiddleware, updateUserController);
+userRoutes.patch(
+  "/:id",
+  ensureEmailExistsMiddleware,
+  ensureCpfExistsMiddleware,
+  updateUserController
+);
 userRoutes.delete("/:id", deleteUserController);
+userRoutes.post("/resetPassword", sendResetEmailPassword);
+userRoutes.patch("/resetPassword/:token", resetEmailPassword);
