@@ -42,6 +42,8 @@ const userSchemaUpdate = userSchema
   .omit({
     id: true,
     user_color: true,
+    reset_password:true
+    
   })
   .partial();
 
