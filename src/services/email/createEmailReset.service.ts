@@ -3,7 +3,7 @@ import { prisma } from "../../server";
 import { AppError } from "../../errors/errors";
 import { emailService } from "../../utils/sendMail.utils";
 
-export const sendEmailResetPassword = async (email: string) => {
+export const sendEmailResetPasswordService = async (email: string) => {
   const user = await prisma.users.findFirst({
     where: { email },
   });

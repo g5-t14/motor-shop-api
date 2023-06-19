@@ -47,7 +47,7 @@ const userSchemaResponse = userSchema.omit({
   password: true,
 });
 
-const userSchemaResetPassword = userSchema.omit({
+const userSchemaResetPasswordResponse = userSchema.omit({
 
 reset_password:true,
 
@@ -69,5 +69,5 @@ export {
   userSchemaResponse,
   userSchemaUpdate,
   resetEmailSchema,
-  userSchemaResetPassword
+  userSchemaResetPasswordResponse
 };

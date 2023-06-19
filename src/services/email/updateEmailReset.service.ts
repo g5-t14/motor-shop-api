@@ -4,7 +4,7 @@ import { AppError } from "../../errors/errors";
 
 
 
-export const resetPassword = async(password:string, resetToken: string)=> {
+export const resetPasswordService = async(password:string, resetToken: string)=> {
     const user = await prisma.users.findFirst({
         where: {
             reset_password: resetToken

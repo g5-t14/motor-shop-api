@@ -4,6 +4,8 @@ import {
   userSchemaColorRequest,
   userSchemaRequest,
   userSchemaResponse,
+  resetEmailSchema,
+  userSchemaResetPasswordResponse
 } from "../schemas/user.schema";
 
 export type TUser = z.infer<typeof userSchema>;
@@ -15,5 +17,6 @@ export type TUserRequestWithColor = z.infer<typeof userSchemaColorRequest>;
 export type TUserResponse = z.infer<typeof userSchemaResponse>;
 
 export type TUserUpdateRequest = Partial<TUserRequest>;
+export type TResetEmail = z.infer<typeof resetEmailSchema>
 
 
