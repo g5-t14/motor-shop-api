@@ -29,34 +29,39 @@ const adSchema = z.object({
   cover_img: z.string(),
   is_active: z.boolean(),
   pictures: picturesSchemaRequest,
-  user_seller: z.object({
-    id: z.number(),
-    name: z.string(),
-    user_color: z.string()
-  }).nullish(),
+  user_seller: z
+    .object({
+      id: z.number(),
+      name: z.string(),
+      user_color: z.string(),
+      description: z.string(),
+    })
+    .nullish(),
 });
 
 const adSchemaRequest = adSchema.omit({
   id: true,
   user_id: true,
   user_seller: true,
-  is_active: true
+  is_active: true,
 });
 
 const adSchemaResponse = adSchema;
 
 const manyAdsSchemaResponse = z.array(adSchemaResponse);
 
-const adSchemaUpdate = adSchema.omit({
-  id: true,
-  user_id: true,
-  user_seller: true
-}).deepPartial();
+const adSchemaUpdate = adSchema
+  .omit({
+    id: true,
+    user_id: true,
+    user_seller: true,
+  })
+  .deepPartial();
 
 export {
   adSchema,
   adSchemaRequest,
   adSchemaResponse,
   adSchemaUpdate,
-  manyAdsSchemaResponse
+  manyAdsSchemaResponse,
 };
