@@ -13,8 +13,8 @@ import {
   deleteUserController,
   retrieveUserController,
   updateUserController,
-  sendResetEmailPassword,
-  resetEmailPassword,
+  sendResetEmailPasswordController,
+  resetEmailPasswordController,
 } from "../controllers/user";
 
 export const userRoutes: Router = Router();
@@ -40,5 +40,5 @@ userRoutes.patch(
   updateUserController
 );
 userRoutes.delete("/:id", deleteUserController);
-userRoutes.post("/resetPassword", sendResetEmailPassword);
-userRoutes.patch("/resetPassword/:token", resetEmailPassword);
+userRoutes.post("/resetPassword", sendResetEmailPasswordController);
+userRoutes.patch("/resetPassword/:token", resetEmailPasswordController);

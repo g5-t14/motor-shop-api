@@ -9,7 +9,7 @@ const userSchema = z.object({
     .string()
     .max(60)
     .transform((password) => hashSync(password, 10)),
-  reset_password: z.string(),
+  reset_password: z.string().max(127),
   cpf: z.string().max(11),
   phone: z.string().max(11),
   birthdate: z.string().max(8),
@@ -47,7 +47,7 @@ const userSchemaResponse = userSchema.omit({
   password: true,
 });
 
-const userSchemaResetPassword = userSchema.omit({
+const userSchemaResetPasswordResponse = userSchema.omit({
 
 reset_password:true,
 
@@ -69,5 +69,5 @@ export {
   userSchemaResponse,
   userSchemaUpdate,
   resetEmailSchema,
-  userSchemaResetPassword
+  userSchemaResetPasswordResponse
 };

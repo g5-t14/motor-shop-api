@@ -1,12 +1,13 @@
 import { createTransport } from "nodemailer";
-import { IsendEmailResetPassword} from "../interfaces/resetEmail.interfaces";
+import {TResetEmail} from "../interfaces/user.interfaces";
 import { AppError } from "../errors/errors";
 import Mailgen from "mailgen";
 
 class EmailService {
-    async sendEmail({to,subject,text}: IsendEmailResetPassword){
+    async sendEmail({to,subject,text}: TResetEmail){
 
         const trasnporter = createTransport({
+            
             host: "smtp.gmail.com",
             auth: {
                 user: process.env.SMTP_USER,

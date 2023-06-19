@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-import { resetPassword } from "../../services/email/updateEmailReset.service";
-import { sendEmailResetPassword } from "../../services/email/createEmailReset.service";
+import { sendEmailResetPasswordService } from "../../services/email/createEmailReset.service";
 
-export const sendResetEmailPassword = async (req: Request, res: Response) => {
+export const sendResetEmailPasswordController = async (req: Request, res: Response) => {
   const { email } = req.body;
 
-  await sendEmailResetPassword(email);
+  await sendEmailResetPasswordService(email);
   return res.json({ message: "token send" });
 };
