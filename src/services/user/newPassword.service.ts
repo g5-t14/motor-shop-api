@@ -4,7 +4,7 @@ import { AppError } from "../../errors/errors";
 
 
 
-export const resetPasswordService = async(password:string, resetToken: string)=> {
+export const newPasswordService = async(password:string, resetToken: string): Promise<void> => {
     const user = await prisma.users.findFirst({
         where: {
             reset_password: resetToken
@@ -21,7 +21,7 @@ export const resetPasswordService = async(password:string, resetToken: string)=>
         },
         data: {
             password: hashSync(password, 10),
-            reset_password: null
+            reset_password: ""
         }
     })
 

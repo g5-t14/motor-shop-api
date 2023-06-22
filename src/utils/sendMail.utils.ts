@@ -16,7 +16,7 @@ class EmailService {
         })
 
         await trasnporter.sendMail({
-            from: "motor.shop@kenzie.com.br",
+            from: "giovanitoperotto@gmail.com",
             to,
             subject,
             html: text
@@ -35,8 +35,8 @@ class EmailService {
         const mailGenerator = new Mailgen({
             theme: 'default',
             product: {
-                name: 'Motor-Shop-API',
-                link: 'http://localhost:3000'        
+                name: 'Motor Shop',
+                link: 'http://localhost:5173'        
                
             }
         });
@@ -50,7 +50,7 @@ class EmailService {
                     button: {
                         color: '#4529E6',
                         text: 'Reset your password',
-                        link: `http://localhost:3000/resetPassword/${resetToken}`
+                        link: `http://localhost:5173/resetPassword/${resetToken}`
                     }
                 },
                 outro: 'If you did not request a password reset, no further action is required on your part.'

@@ -7,6 +7,7 @@ CREATE TABLE "users" (
     "name" VARCHAR(127) NOT NULL,
     "email" VARCHAR(127) NOT NULL,
     "password" VARCHAR(60) NOT NULL,
+    "reset_password" VARCHAR(127) NOT NULL,
     "cpf" VARCHAR(11) NOT NULL,
     "phone" VARCHAR(11) NOT NULL,
     "birthdate" VARCHAR(8) NOT NULL,

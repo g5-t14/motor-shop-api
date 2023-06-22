@@ -3,7 +3,7 @@ import { prisma } from "../../server";
 import { AppError } from "../../errors/errors";
 import { emailService } from "../../utils/sendMail.utils";
 
-export const sendEmailResetPasswordService = async (email: string) => {
+export const forgotPasswordService = async (email: string): Promise<void> => {
   const user = await prisma.users.findFirst({
     where: { email },
   });
@@ -12,7 +12,7 @@ export const sendEmailResetPasswordService = async (email: string) => {
     throw new AppError("user not found", 404);
   }
 
-  const resetToken = randomUUID();
+  const resetToken: string = randomUUID();
 
   await prisma.users.update({
     where: { email },
