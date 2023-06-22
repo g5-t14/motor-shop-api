@@ -22,6 +22,12 @@ export const userRoutes: Router = Router();
 userRoutes.post("/resetPassword", forgotPasswordController);
 userRoutes.patch("/resetPassword/:token", newPasswordController);
 
+userRoutes.patch(
+  "/:id",
+  ensureCpfExistsMiddleware,
+  updateUserController
+);
+
 userRoutes.post(
   "",
   ensureDataIsValidMiddleware(userSchemaRequest),
@@ -38,10 +44,5 @@ userRoutes.use(
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware
 );
-userRoutes.patch(
-  "/:id",
-  ensureEmailExistsMiddleware,
-  ensureCpfExistsMiddleware,
-  updateUserController
-);
+
 userRoutes.delete("/:id", deleteUserController);
