@@ -26,13 +26,13 @@ userRoutes.post(
   ensureCpfExistsMiddleware,
   createUserController
 );
+userRoutes.get("/:id", ensureUserExistsMiddleware, retrieveUserController);
 userRoutes.use(
   "/:id",
   ensureAuthMiddleware,
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware
 );
-userRoutes.get("/:id", retrieveUserController);
 userRoutes.patch(
   "/:id",
   ensureEmailExistsMiddleware,
