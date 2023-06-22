@@ -16,7 +16,7 @@ class EmailService {
         })
 
         await trasnporter.sendMail({
-            from: "giovanitoperotto@gmail.com",
+            from: process.env.SMTP_USER,
             to,
             subject,
             html: text
