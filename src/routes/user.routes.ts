@@ -13,11 +13,14 @@ import {
   deleteUserController,
   retrieveUserController,
   updateUserController,
-  sendResetEmailPasswordController,
-  resetEmailPasswordController,
+  forgotPasswordController,
+  newPasswordController,
 } from "../controllers/user";
 
 export const userRoutes: Router = Router();
+
+userRoutes.post("/resetPassword", forgotPasswordController);
+userRoutes.patch("/resetPassword/:token", newPasswordController);
 
 userRoutes.post(
   "",
@@ -26,7 +29,9 @@ userRoutes.post(
   ensureCpfExistsMiddleware,
   createUserController
 );
+
 userRoutes.get("/:id", ensureUserExistsMiddleware, retrieveUserController);
+
 userRoutes.use(
   "/:id",
   ensureAuthMiddleware,
@@ -40,5 +45,3 @@ userRoutes.patch(
   updateUserController
 );
 userRoutes.delete("/:id", deleteUserController);
-userRoutes.post("/resetPassword", sendResetEmailPasswordController);
-userRoutes.patch("/resetPassword/:token", resetEmailPasswordController);

@@ -22,6 +22,7 @@ export const createUserService = async (data: TUserRequestWithColor): Promise<TU
   const randomIndex = Math.floor(Math.random() * colors.length);
 
   data.user_color = colors[randomIndex];
+  data.reset_password = ""
   const user: Users = await prisma.users.create({ data });
 
   return userSchemaResponse.parse(user);
