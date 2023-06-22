@@ -30,7 +30,7 @@ userRoutes.post(
   createUserController
 );
 
-userRoutes.get("/:id", ensureUserExistsMiddleware,retrieveUserController);
+userRoutes.get("/:id", ensureUserExistsMiddleware, retrieveUserController);
 
 userRoutes.use(
   "/:id",
@@ -38,7 +38,6 @@ userRoutes.use(
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware
 );
-
 userRoutes.patch(
   "/:id",
   ensureEmailExistsMiddleware,
@@ -46,5 +45,3 @@ userRoutes.patch(
   updateUserController
 );
 userRoutes.delete("/:id", deleteUserController);
-
-
