@@ -16,12 +16,13 @@ import {
   forgotPasswordController,
   newPasswordController,
 } from "../controllers/user";
+import { retrieveUserByTokenController } from "../controllers/user/retrieveUserByToken.controller";
 
 export const userRoutes: Router = Router();
 
 userRoutes.post("/resetPassword", forgotPasswordController);
 userRoutes.patch("/resetPassword/:token", newPasswordController);
-
+userRoutes.patch("/:id", ensureCpfExistsMiddleware, updateUserController);
 userRoutes.post(
   "",
   ensureDataIsValidMiddleware(userSchemaRequest),
@@ -29,19 +30,12 @@ userRoutes.post(
   ensureCpfExistsMiddleware,
   createUserController
 );
-
+userRoutes.get("/profile", ensureAuthMiddleware, retrieveUserByTokenController);
 userRoutes.get("/:id", ensureUserExistsMiddleware, retrieveUserController);
-
 userRoutes.use(
   "/:id",
   ensureAuthMiddleware,
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware
-);
-userRoutes.patch(
-  "/:id",
-  ensureEmailExistsMiddleware,
-  ensureCpfExistsMiddleware,
-  updateUserController
 );
 userRoutes.delete("/:id", deleteUserController);
