@@ -1,9 +1,14 @@
 import { prisma } from "../../server";
 import { Users } from "@prisma/client";
-import { TUserRequestWithColor, TUserResponse } from "../../interfaces/user.interfaces";
+import {
+  TUserRequestWithColor,
+  TUserResponse,
+} from "../../interfaces/user.interfaces";
 import { userSchemaResponse } from "../../schemas/user.schema";
 
-export const createUserService = async (data: TUserRequestWithColor): Promise<TUserResponse> => {
+export const createUserService = async (
+  data: TUserRequestWithColor
+): Promise<TUserResponse> => {
   const colors = [
     "#E34D8C",
     "#C04277",
@@ -22,7 +27,7 @@ export const createUserService = async (data: TUserRequestWithColor): Promise<TU
   const randomIndex = Math.floor(Math.random() * colors.length);
 
   data.user_color = colors[randomIndex];
-  data.reset_password = ""
+  data.reset_password = "";
   const user: Users = await prisma.users.create({ data });
 
   return userSchemaResponse.parse(user);
