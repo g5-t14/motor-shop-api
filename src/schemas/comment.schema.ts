@@ -1,36 +1,36 @@
-import {z} from "zod";
+import { z } from "zod";
 
 const commentSchema = z.object({
-id: z.number(),
-user_id: z.number(),
-ad_id: z.number(),
-description: z.string(),
-created_at: z.coerce.string()
-})
+  id: z.number(),
+  user_id: z.number(),
+  ad_id: z.number(),
+  description: z.string(),
+  created_at: z.date(),
+});
 
-const commentSchemaResponse = commentSchema
+const commentSchemaResponse = commentSchema;
 
 const commentSchemaRequest = commentSchema.omit({
-id: true,
-user_id:true,
-ad_id:true
-})
+  id: true,
+  user_id: true,
+  ad_id: true,
+  created_at: true,
+});
 
-const manyCommentSchemaResponse = z.array(commentSchema)
+const manyCommentSchemaResponse = z.array(commentSchema);
 
-
-const commentSchemaUpdate = commentSchema.omit({
+const commentSchemaUpdate = commentSchema
+  .omit({
     id: true,
-    user_id:true,
-    ad_id:true
-    }).deepPartial();
+    user_id: true,
+    ad_id: true,
+  })
+  .deepPartial();
 
 export {
-commentSchema,
-commentSchemaResponse,
-commentSchemaRequest,
-manyCommentSchemaResponse,
-commentSchemaUpdate
-}
-
-
+  commentSchema,
+  commentSchemaResponse,
+  commentSchemaRequest,
+  manyCommentSchemaResponse,
+  commentSchemaUpdate,
+};

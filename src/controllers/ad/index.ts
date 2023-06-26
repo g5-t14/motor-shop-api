@@ -11,5 +11,5 @@ export {
   findOneAdController,
   listAllAdUserController,
   updateAdController,
-  listAllAdsController
+  listAllAdsController,
 };
