@@ -11,5 +11,5 @@ export {
   retrieveUserController,
   updateUserController,
   forgotPasswordController,
-  newPasswordController
+  newPasswordController,
 };

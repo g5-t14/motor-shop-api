@@ -3,21 +3,24 @@ import { prisma } from "../../server";
 import { adSchemaResponse } from "../../schemas/ad.schema";
 import { Ads } from "@prisma/client";
 
-export const updateAdService = async (data: TAdUpdateRequest, pictures:any, adId: number): Promise<TAdResponse> => {
-  
+export const updateAdService = async (
+  data: TAdUpdateRequest,
+  pictures: any,
+  adId: number
+): Promise<TAdResponse> => {
   const updatedAd: Ads = await prisma.ads.update({
     where: { id: adId },
     data: {
-       ...data,
-       pictures: {
+      ...data,
+      pictures: {
         update: {
-          ...pictures
-        }
-       }
+          ...pictures,
+        },
       },
-      include: {
-        pictures: true
-      }
+    },
+    include: {
+      pictures: true,
+    },
   });
 
   return adSchemaResponse.parse(updatedAd);
