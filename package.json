@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build":"tsc",
+    "start": "node dist/server.js",
     "test": "jest --verbose runInBand",
     "dev": "ts-node-dev --ignore-watch node_modules --rs --cls src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs"

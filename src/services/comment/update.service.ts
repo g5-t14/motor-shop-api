@@ -1,7 +1,4 @@
-import {
-  TCommentResponse,
-  TCommentsUpdateRequest,
-} from "../../interfaces/comment.interface";
+import { TCommentResponse, TCommentsUpdateRequest } from "../../interfaces/comment.interfaces";
 import { prisma } from "../../server";
 import { Comments } from "@prisma/client";
 import { commentSchemaResponse } from "../../schemas/comment.schema";
