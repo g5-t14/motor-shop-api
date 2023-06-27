@@ -4,5 +4,5 @@ set -o errexit
 
 yarn
 yarn run build
-yarn prisma migrate dev 
+yarn prisma migrate deploy 
 yarn run dev 
