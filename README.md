@@ -30,7 +30,9 @@
 | DELETE      | Delete ad                            | `/ads/:id`                   | Authenticated           |
 
 
-Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0V/view" 
+Deploy do render: https://motor-shop-service.onrender.com
+
+Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0V/view 
 
 
 ## Rotas que não precisam de autenticação
@@ -78,7 +80,7 @@ Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0
   "number": "185"
   "street": "Rua Ibiraba",
   "complement": "Última casa á direita",
-  "is_seller" True
+  "is_seller" true
 }
 
 ```
@@ -290,7 +292,7 @@ response:
   "year": "1992",
   "fuel": "16L" ,
   "mileage": "1200km",
-  "color": Azul"
+  "color": "Azul"
   "fipe_table": 26000,
   "price": 1800,
   "description": "It's pretty good",
@@ -333,7 +335,7 @@ response:
   "year": "1992",
   "fuel": "16L" ,
   "mileage": "1200km",
-  "color": Azul"
+  "color": "Azul"
   "fipe_table": 26000,
   "price": 1800,
   "description": "It's pretty good",
@@ -364,13 +366,15 @@ Nessa aplicação /users/:id o usuário deve estar logado para poder deletar o s
 
 Nessa aplicação /users/:id o usuário deve estar logado para poder editar o seu perfil.
 
-```json{               
+```json
+{               
   "name": "Alberto"
 
 }
 ```
 response:
-```json{               
+```json
+{               
   "id":1,
   "name": "Alberto",
   "email": "gil@gmail.com",
@@ -393,7 +397,8 @@ response:
 Nessa aplicação /users/:id o usuário deve estar logado para poder pegar o seu perfil.
 
 response:
-```json{               
+```json
+{               
   "id":1,
   "name": "Alberto",
   "email": "gil@gmail.com",
@@ -430,7 +435,7 @@ response:
   "number": "185"
   "street": "Rua Ibiraba",
   "complement": "Última casa á direita",
-  "is_seller" True
+  "is_seller" true
 
 }
 ```
