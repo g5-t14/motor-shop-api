@@ -18,6 +18,7 @@ model Comments {
   ad_id       Int?
   user        Users?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id     Int?
+  username    String   @db.VarChar(127)
 
   @@map("comments")
 }
