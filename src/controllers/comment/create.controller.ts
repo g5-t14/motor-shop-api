@@ -13,7 +13,7 @@ export const createCommentController = async (
   const newComment: TCommentResponse = await createCommentService(
     commentData,
     userId,
-    adId
+    adId,
   );
 
   return res.status(201).json(newComment);

@@ -6,6 +6,7 @@ const commentSchema = z.object({
   ad_id: z.number(),
   description: z.string(),
   created_at: z.date(),
+  username: z.string()
 });
 
 const commentSchemaResponse = commentSchema;
@@ -15,6 +16,7 @@ const commentSchemaRequest = commentSchema.omit({
   user_id: true,
   ad_id: true,
   created_at: true,
+  username: true
 });
 
 const manyCommentSchemaResponse = z.array(commentSchema);
