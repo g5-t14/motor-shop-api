@@ -153,7 +153,8 @@ Na rota /ads qualquer usuário é capaz de ter acesso a lista de anúncios
 
 
 ```json
- {
+
+{
   "id": 1,
   "brand": "Chevrolet",
   "model": "Astra GSI",
