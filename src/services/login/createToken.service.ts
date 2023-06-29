@@ -6,7 +6,10 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { Users } from "@prisma/client";
 
-export const createTokenService = async ({ email, password }: TLoginRequest): Promise<{}> => {
+export const createTokenService = async ({
+  email,
+  password,
+}: TLoginRequest): Promise<{}> => {
   const user: Users | null = await prisma.users.findFirst({
     where: {
       email,
