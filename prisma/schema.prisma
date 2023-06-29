@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Comments {
+  id          Int      @id @default(autoincrement())
+  description String   @db.Text()
+  created_at  DateTime @default(now())
+  ad          Ads?     @relation(fields: [ad_id], references: [id], onDelete: Cascade)
+  ad_id       Int?
+  user        Users?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id     Int?
+  username    String   @db.VarChar(127)
+
+  @@map("comments")
+}
+
+model Users {
+  id             Int        @id @default(autoincrement())
+  name           String     @db.VarChar(127)
+  email          String     @unique @db.VarChar(127)
+  password       String     @db.VarChar(60)
+  reset_password String?    @db.VarChar(127)
+  cpf            String     @unique @db.VarChar(11)
+  phone          String     @db.VarChar(11)
+  birthdate      String     @db.VarChar(8)
+  description    String     @db.Text()
+  is_seller      Boolean    @db.Boolean()
+  cep            String     @db.VarChar(8)
+  state          String     @db.VarChar(127)
+  city           String     @db.VarChar(127)
+  street         String     @db.VarChar(127)
+  number         String     @db.VarChar(127)
+  complement     String     @db.VarChar(127)
+  user_color     String     @db.VarChar(7)
+  ads            Ads[]
+  comments       Comments[]
+
+  @@map("users")
+}
+
+model Ads {
+  id          Int        @id @default(autoincrement())
+  brand       String     @db.VarChar(127)
+  model       String     @db.VarChar(127)
+  year        String     @db.VarChar(10)
+  fuel        String     @db.VarChar(127)
+  mileage     String     @db.VarChar(127)
+  color       Colors     @default(Cinza)
+  fipe_table  Int        @db.Integer()
+  price       Int        @db.Integer()
+  description String     @db.Text()
+  cover_img   String     @db.VarChar(384)
+  is_active   Boolean    @default(true)
+  pictures    Pictures?
+  user_seller Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id     Int
+  comments    Comments[]
+
+  @@map("ads")
+}
+
+model Pictures {
+  id        Int     @id @default(autoincrement())
+  picture_1 String  @db.VarChar(384)
+  picture_2 String  @db.VarChar(384)
+  picture_3 String? @db.VarChar(384)
+  picture_4 String? @db.VarChar(384)
+  picture_5 String? @db.VarChar(384)
+  picture_6 String? @db.VarChar(384)
+  ad        Ads     @relation(fields: [ad_id], references: [id], onDelete: Cascade)
+  ad_id     Int     @unique
+
+  @@map("pictures")
+}
+
+enum Colors {
+  Preto
+  Cinza
+  Marrom
+  Vermelho
+  Laranja
+  Amarelo
+  VerdeClaro
+  VerdeEscuro
+  AzulClaro
+  AzulEscuro
+  Roxo
+  Rosa
+  Branco
+}

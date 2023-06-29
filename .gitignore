@@ -1,0 +1,9 @@
+.env
+node_modules/
+.vscode/
+*lock*
+temp/
+dist/
+tmp/
+.idea/
+migrations
