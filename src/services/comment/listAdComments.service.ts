@@ -11,7 +11,14 @@ export const listAllAdCommentsService = async (
       id: adId,
     },
     include: {
-      comments: true,
+      comments: {
+        include: {
+          user: true,
+        },
+        orderBy: {
+          id: "asc",
+        },
+      },
     },
   });
 
