@@ -28,7 +28,10 @@
 | GET         | Retrieve ad                          | `/ads/:id`                   | Authenticated           |
 | PATCH       | Update ad                            | `/ads/:id`                   | Authenticated           |
 | DELETE      | Delete ad                            | `/ads/:id`                   | Authenticated           |
-
+|  POST       | Post comment                         | `/comments/:ad_id`           |  Authenticated          |
+|  GET        | Get comments                         | `/comments/:ad_id`           |  No Authentication      |
+|  PATCH      | Patch comment                        | `/comments/:comment_id`      |  Authenticated          |
+|  DELETE     | Delete comment                       | `/comments/:comment_id`      |  Authenticated          |
 
 Deploy do render: https://motor-shop-service.onrender.com
 
@@ -56,7 +59,7 @@ Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0
   "number": "185"
   "street": "Rua Ibiraba",
   "complement": "Última casa á direita",
-  "is_seller" True,
+  "is_seller" true,
   "password":12345678
   "confirm_password": 12345678,
 }
@@ -223,9 +226,27 @@ response:
       }
 ```
 
+<h2 align ='center'> Listando Comentários de uma núncio  </h2>
 
+Na rota get /comments/:ad_id qualquer usuário é capaz de ter acesso a lista de comentários do anúncio
 
+`GET - /comments/:ad_id Status 200 ok  `
 
+```json
+{
+	"comments": [
+		{
+			"id": 6,
+			"user_id": 2,
+			"ad_id": 11,
+			"description": "Thanks Gilberto, very cool.",
+			"created_at": "2023-06-28T19:10:45.239Z",
+			"username": "Jonathan"
+		}
+	]
+}
+
+```
 
 ## Rotas que precisam de autenticação
 `POST /ads - FORMATO DA RESPOSTA - STATUS 201` 
@@ -388,7 +409,7 @@ response:
   "number": "185"
   "street": "Rua Ibiraba",
   "complement": "Última casa á direita",
-  "is_seller" True
+  "is_seller" true
 
 }
 ```
@@ -412,7 +433,7 @@ response:
   "number": "185"
   "street": "Rua Ibiraba",
   "complement": "Última casa á direita",
-  "is_seller" True
+  "is_seller" true
 
 }
 ```
@@ -439,6 +460,58 @@ response:
 
 }
 ```
+
+<h2 align ='center'> Postar comentários </h2>
+ 
+ Nessa aplicação /comments/:id o usuário deve estar logado para poder comentar o anúncio. 
+
+`POST - /comments/:ad_id - FORMATO DA RESPOSTA - STATUS 201`
+
+
+```json
+{
+	"description": "Thanks Gilberto, very cool."
+}
+```
+```json 
+{
+	"id": 4,
+	"user_id": 2,
+	"ad_id": 10,
+	"description": "Thanks Gilberto, very cool.",
+	"created_at": "2023-06-28T19:09:59.826Z",
+	"username": "Jonathan"
+}
+````
+<h2 align ='center'> Editar comentários </h2>
+ 
+ Nessa aplicação /comments/:comment_id o usuário deve estar logado para poder editar o comentário do anúncio.
+Somente o usuário que criou o comentário original pode edita-lo  
+
+```json
+{
+	"description": "It's pretty good"
+}
+```
+```json 
+{
+	"id": 4,
+	"user_id": 2,
+	"ad_id": 10,
+	"description": "It's pretty good"
+	"created_at": "2023-06-28T19:09:59.826Z",
+	"username": "Jonathan"
+}
+````
+
+<h2 align ='center'> Deletar comentários </h2>
+ 
+ Nessa aplicação /comments/:ad_id o usuário deve estar logado para poder editar o comentário do anúncio.
+Somente o usuário que criou o comentário original pode deleta-lo  
+
+`DELETE - /comments/:ad_id - FORMATO DA RESPOSTA - STATUS 204 NO COMMENT`
+
+
 
 
 ## Install dependencies:
