@@ -1,4 +1,7 @@
-import { TCommentResponse, TCommentsUpdateRequest } from "../../interfaces/comment.interfaces";
+import {
+  TCommentResponse,
+  TCommentsUpdateRequest,
+} from "../../interfaces/comment.interfaces";
 import { prisma } from "../../server";
 import { Comments } from "@prisma/client";
 import { commentSchemaResponse } from "../../schemas/comment.schema";
@@ -10,6 +13,10 @@ export const updateCommentService = async (
     where: { id: commentId },
     data: {
       ...data,
+      edited: true,
+    },
+    include: {
+      user: true,
     },
   });
 

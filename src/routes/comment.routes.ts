@@ -7,9 +7,14 @@ import {
 import {
   ensureAdExistsMiddleware,
   ensureAuthMiddleware,
+  ensureCommentExistsMiddleware,
   ensureDataIsValidMiddleware,
+  ensureIsOwnerCommentMiddleware,
 } from "../middlewares";
-import { commentSchemaRequest } from "../schemas/comment.schema";
+import {
+  commentSchemaRequest,
+  commentSchemaUpdate,
+} from "../schemas/comment.schema";
 import { listAllAdCommentsController } from "../controllers/comment/listAdComments.controller";
 
 export const commentRoutes: Router = Router();
@@ -19,12 +24,22 @@ commentRoutes.get(
   ensureAdExistsMiddleware,
   listAllAdCommentsController
 );
-commentRoutes.use(ensureAuthMiddleware);
 commentRoutes.post(
   "/:id",
+  ensureAuthMiddleware,
   ensureAdExistsMiddleware,
   ensureDataIsValidMiddleware(commentSchemaRequest),
   createCommentController
 );
-commentRoutes.patch("/:id", updateCommentController);
+commentRoutes.use(
+  "/:id",
+  ensureAuthMiddleware,
+  ensureCommentExistsMiddleware,
+  ensureIsOwnerCommentMiddleware
+);
+commentRoutes.patch(
+  "/:id",
+  ensureDataIsValidMiddleware(commentSchemaUpdate),
+  updateCommentController
+);
 commentRoutes.delete("/:id", deleteCommentController);

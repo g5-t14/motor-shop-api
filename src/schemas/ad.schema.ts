@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { picturesSchemaRequest } from "./pictures.schema";
-import { commentSchema } from "./comment.schema";
+import { commentSchema, commentSchemaResponse } from "./comment.schema";
 
 const adSchema = z.object({
   id: z.number(),
@@ -61,7 +61,7 @@ const adSchemaUpdate = adSchema
   .deepPartial();
 
 const adCommentsResponse = z.object({
-  comments: z.array(commentSchema),
+  comments: z.array(commentSchemaResponse),
 });
 
 export {

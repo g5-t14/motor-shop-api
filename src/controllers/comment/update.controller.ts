@@ -1,5 +1,8 @@
-import express, { Request, Response } from "express";
-import { TCommentResponse, TCommentsUpdateRequest } from "../../interfaces/comment.interfaces";
+import { Request, Response } from "express";
+import {
+  TCommentResponse,
+  TCommentsUpdateRequest,
+} from "../../interfaces/comment.interfaces";
 import { updateCommentService } from "../../services/comment/update.service";
 
 export const updateCommentController = async (req: Request, res: Response) => {
