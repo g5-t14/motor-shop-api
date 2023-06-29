@@ -216,7 +216,7 @@ Na rota /users/resetPassword/:token passando o token gerado como parâmetro
 
 ```json
        {
-     "password":12345678" 
+     "password":"12345678" 
 	}
 ```
 response:
@@ -263,7 +263,7 @@ Na rota get /comments/:ad_id qualquer usuário é capaz de ter acesso a lista de
   "year": "1992",
   "fuel": "15L" ,
   "mileage": "1200km",
-  "color": Azul"
+  "color": "Azul"
   "fipe_table": 26000,
   "price": 1800,
   "description": "It's pretty good",
@@ -282,7 +282,7 @@ response:
   "year": "1992",
   "fuel": "15L" ,
   "mileage": "1200km",
-  "color": Azul"
+  "color": "Azul"
   "fipe_table": 26000,
   "price": 1800,
   "description": "It's pretty good",
