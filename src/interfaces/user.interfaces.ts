@@ -5,7 +5,6 @@ import {
   userSchemaRequest,
   userSchemaResponse,
   resetEmailSchema,
-  userSchemaResetPasswordResponse
 } from "../schemas/user.schema";
 
 export type TUser = z.infer<typeof userSchema>;
