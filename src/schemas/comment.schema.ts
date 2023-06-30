@@ -12,6 +12,7 @@ const commentSchema = z.object({
 const commentSchemaResponse = commentSchema
   .extend({
     user: z.object({
+      id: z.number(),
       name: z.string(),
       user_color: z.string(),
     }),
