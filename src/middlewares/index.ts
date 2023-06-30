@@ -7,6 +7,8 @@ import { ensureIsOwnerAdMiddleware } from "./ensureIsOwnerAd.middleware";
 import { ensureIsOwnerUserMiddleware } from "./ensureIsOwnerUser.middlewares";
 import { ensureUserExistsMiddleware } from "./ensureUserExists.middleware";
 import { ensureIsSellerMiddleware } from "./ensureIsSeller.middlewares";
+import { ensureCommentExistsMiddleware } from "./ensureCommentExist.middleware";
+import { ensureIsOwnerCommentMiddleware } from "./ensureIsOwnerComment.middleware";
 
 export {
   ensureAdExistsMiddleware,
@@ -18,4 +20,6 @@ export {
   ensureUserExistsMiddleware,
   ensureIsOwnerUserMiddleware,
   ensureIsSellerMiddleware,
+  ensureCommentExistsMiddleware,
+  ensureIsOwnerCommentMiddleware,
 };

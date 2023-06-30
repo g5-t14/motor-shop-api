@@ -1,11 +1,11 @@
 import { createCommentController } from "./create.controller";
 import { updateCommentController } from "./update.controller";
 import { deleteCommentController } from "./delete.controller";
-import { listAllCommentController } from "./list.controller";
+import { listAllAdCommentsController } from "./listAdComments.controller";
 
 export {
   createCommentController,
   updateCommentController,
   deleteCommentController,
-  listAllCommentController,
+  listAllAdCommentsController,
 };
