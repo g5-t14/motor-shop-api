@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { v4 as uuidv4 } from 'uuid';
 import { prisma } from "../../server";
 import { AppError } from "../../errors/errors";
 import { emailService } from "../../utils/sendMail.utils";
@@ -12,7 +12,7 @@ export const forgotPasswordService = async (email: string): Promise<void> => {
     throw new AppError("user not found", 404);
   }
 
-  const resetToken: string = randomUUID();
+  const resetToken: string = uuidv4();
 
   await prisma.users.update({
     where: { email },
