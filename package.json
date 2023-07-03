@@ -8,7 +8,8 @@
     "start": "node dist/server.js",
     "test": "jest --verbose runInBand",
     "dev": "ts-node-dev --ignore-watch node_modules --rs --cls src/server.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "railway": "yarn && yarn build && npx prisma generate && npx prisma migrate dev && npx prisma migrate deploy && yarn start"
   },
   "engines" : { 
     "node" : ">=16.0.0 <17.0.0"
