@@ -3,7 +3,7 @@
 # exit on error
 set -o errexit
 
-npm run
+npm install
 npm run build
 npx prisma generate
 npx prisma migrate dev 
