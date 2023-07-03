@@ -10,6 +10,9 @@
     "dev": "ts-node-dev --ignore-watch node_modules --rs --cls src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   },
+  "engines" : { 
+    "node" : ">=16.0.0 <17.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/g5-t14/motor-shop-api.git"
