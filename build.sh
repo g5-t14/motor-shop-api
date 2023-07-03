@@ -3,9 +3,9 @@
 # exit on error
 set -o errexit
 
-yarn
-yarn build
+npm run
+npm run build
 npx prisma generate
 npx prisma migrate dev 
 npx prisma migrate deploy 
-yarn start
+npm run start
