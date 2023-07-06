@@ -442,6 +442,7 @@ response:
 }
 ```
 
+<h2 align ='center'> Postando Comentários </h2>
 
 `POST - /comment/:ad_id - status 200 ok`
 
@@ -472,6 +473,8 @@ Response:
 }
 
 ```
+
+<h2 align ='center'> Editando Comentário </h2>
 
 `PATCH - /comment/:comment_id - status 200 ok`
 
@@ -506,7 +509,7 @@ também é necessário passar o token de autorização do usuário .
 
 
 
-
+<h2 align ='center'> Listando Comentários </h2>
 
 `GET -  /comment/:ad_id status 200 ok`
 
@@ -547,7 +550,7 @@ Response:
 ```
 
 
-
+<h2 align ='center'> Deletar Comentários </h2>
 
 `DELETE - /comment/:comment_id - status 204`
 
