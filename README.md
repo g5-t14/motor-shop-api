@@ -52,6 +52,10 @@ npm run dev
 | GET         | Retrieve ad            | `/ads/:id`                    | Authenticated           |
 | PATCH       | Update ad              | `/ads/:id`                    | Authenticated           |
 | DELETE      | Delete ad              | `/ads/:id`                    | Authenticated           |
+| POST        | Post ad                | `/comments/:ad_id`            | Authenticated           |
+| GET         | Get comments           |  `/comments/:ad_id`           | Authenticated           |
+| PATCH       | Patch comments         |  `/comments/:id`              | Authenticated           |
+| DELETE      | Delete comments        |  `/comments/:ad_id`           | Authenticated           |
 
 Deploy do render: https://motor-shop-service.onrender.com
 
@@ -437,3 +441,136 @@ response:
   "is_seller": true
 }
 ```
+
+
+`POST - /comment/:ad_id - status 200 ok`
+
+Em nossa rota de postar comentários de nossa requisição é necessário, 
+passar o id do anúncio na qual o usuário deseja comentar.   
+
+
+```json
+
+{
+  "description": "It's pretty good"
+}
+
+```
+
+Response:
+```json
+{
+	"id": 60,
+	"description": "Hey, It's pretty good.",
+	"created_at": "2023-07-04T18:28:20.235Z",
+	"edited": false,
+	"user": {
+		"id": 2,
+		"name": "Gilberto",
+		"user_color": "#153D2E"
+	}
+}
+
+```
+
+`PATCH - /comment/:comment_id - status 200 ok`
+
+Em nossa rota de editar comentários de nossa requisição, é necessário, 
+passar o id do comentário do usuário como parâmetro para que seja possível
+a edição dos comentários, somente o usuário dono do comentário é capaz de edita-lo, 
+também é necessário passar o token de autorização do usuário .   
+
+
+```json
+
+{
+  "description": "Thanks Gilberto, very cool."
+}
+
+```
+
+
+```json
+{
+	"id": 60,
+	"description": "Thanks Gilberto, very cool.",
+	"created_at": "2023-07-04T18:28:20.235Z",
+	"edited": false,
+	"user": {
+		"id": 2,
+		"name": "Gilberto",
+		"user_color": "#153D2E"
+	}
+}
+```
+
+
+
+
+
+`GET -  /comment/:ad_id status 200 ok`
+
+Na rota de listagem de comentários de um requisição é necessário, 
+passar o id do anúncio na qual o usuário deseja ver os comentários.
+Não é necessário um token para solicitar a requisição.
+
+Response:
+
+```json
+
+[{
+	"id": 60,
+	"description": "Hey, it's pretty good.",
+	"created_at": "2023-07-04T18:28:10.235Z",
+	"edited": false,
+	"user": {
+		"id": 2,
+		"name": "Gilberto",
+		"user_color": "#153D2E"
+	}
+},
+ 
+ {
+	"id": 59,
+	"description": "Thanks Gilberto, very cool.",
+	"created_at": "2023-07-04T18:28:50.235Z",
+	"edited": false,
+	"user": {
+		"id": 2,
+		"name": "Jonathan",
+		"user_color": "#153D2E"
+	}
+}
+
+]
+
+```
+
+
+
+
+`DELETE - /comment/:comment_id - status 204`
+
+    Em nossa rota de deletar comentários de nossa requisição, é necessário, 
+    passar o id do comentário do usuário como parâmetro para que seja possível
+    a deleção do comentário do mesmo, somente o usuário dono do comentário é capaz de deleta-lo,
+    também é necessário passar o token de autorização do usuário .   
+
+
+```json
+
+{
+  "message": "No content."
+}
+
+```
+
+
+
+
+
+
+
+
+
+
