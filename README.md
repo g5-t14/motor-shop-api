@@ -59,7 +59,9 @@ npm run dev
 
 Deploy do render: https://motor-shop-service.onrender.com
 
-Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0V/view
+Diagrama do Der: https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0V/view
+
+Doc do insomnia: https://g5-t14.github.io/doc-insomnia/ 
 
 ## Rotas que não precisam de autenticação
 
@@ -81,10 +83,10 @@ Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0
   "city": "São Caetano",
   "number": "185",
   "street": "Rua Ibiraba",
-  "complement": "Última casa á direita",
+  "complement": "Última casa à direita",
   "is_seller": true,
   "password": "Teste123!"
-}"
+}
 ```
 
 `POST /users - FORMATO DA RESPOSTA - STATUS 201`
@@ -103,7 +105,7 @@ Diagrama do Der https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0
   "city": "São Caetano",
   "number": "185",
   "street": "Rua Ibiraba",
-  "complement": "Última casa á direita",
+  "complement": "Última casa à direita",
   "is_seller": true
 }
 ```
