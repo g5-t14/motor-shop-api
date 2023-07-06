@@ -53,7 +53,7 @@ npm run dev
 | PATCH       | Update ad              | `/ads/:id`                    | Authenticated           |
 | DELETE      | Delete ad              | `/ads/:id`                    | Authenticated           |
 | POST        | Post ad                | `/comments/:ad_id`            | Authenticated           |
-| GET         | Get comments           | `/comments/:ad_id`            | Authenticated           |
+| GET         | Get comments           | `/comments/:ad_id`            |  No Authentication      |
 | PATCH       | Patch comments         | `/comments/:id`               | Authenticated           |
 | DELETE      | Delete comments        | `/comments/:id`               | Authenticated           |
 
@@ -503,7 +503,7 @@ passar o id do anúncio na qual o usuário deseja comentar.
 ```json
 
 {
-  "description": "It's pretty good"
+  "description": "Hey,It's pretty good"
 }
 
 ```
