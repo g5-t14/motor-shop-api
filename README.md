@@ -228,6 +228,47 @@ response:
 }
 ```
 
+<h2 align ='center'> Listando Comentários </h2>
+
+`GET -  /comment/:ad_id status 200 ok`
+
+Na rota de listagem de comentários de um requisição é necessário, 
+passar o id do anúncio na qual o usuário deseja ver os comentários.
+Não é necessário um token para solicitar a requisição.
+
+Response:
+
+```json
+
+[{
+	"id": 60,
+	"description": "Hey, it's pretty good.",
+	"created_at": "2023-07-04T18:28:10.235Z",
+	"edited": false,
+	"user": {
+		"id": 2,
+		"name": "Gilberto",
+		"user_color": "#153D2E"
+	}
+},
+ 
+ {
+	"id": 59,
+	"description": "Thanks Gilberto, very cool.",
+	"created_at": "2023-07-04T18:28:50.235Z",
+	"edited": false,
+	"user": {
+		"id": 2,
+		"name": "Jonathan",
+		"user_color": "#153D2E"
+	}
+}
+
+]
+
+```
+
+
 ## Rotas que precisam de autenticação
 
 `POST /ads - FORMATO DA RESPOSTA - STATUS 201`
@@ -348,6 +389,7 @@ response
   "pictures": "Blue.png"
 }
 ```
+<h2 align ='center'> Deletar Usuários </h2>
 
 `DELETE /users/:id - FORMATO DA RESPOSTA - STATUS 204`
 
@@ -360,6 +402,8 @@ Nessa aplicação /users/:id o usuário deve estar logado para poder deletar o s
 
 }
 ```
+
+<h2 align ='center'> Editar Usuários </h2>
 
 `PATCH /users/:id - FORMATO DA RESPOSTA - STATUS 200`
 
@@ -391,6 +435,8 @@ response:
   "is_seller": true
 }
 ```
+
+<h2 align ='center'> Acessando Perfil </h2>
 
 `GET/users/profile - FORMATO DA RESPOSTA - STATUS 200`
 
@@ -443,6 +489,8 @@ response:
 ```
 
 <h2 align ='center'> Postando Comentários </h2>
+
+
 
 `POST - /comment/:ad_id - status 200 ok`
 
@@ -507,47 +555,6 @@ também é necessário passar o token de autorização do usuário .
 }
 ```
 
-
-
-<h2 align ='center'> Listando Comentários </h2>
-
-`GET -  /comment/:ad_id status 200 ok`
-
-Na rota de listagem de comentários de um requisição é necessário, 
-passar o id do anúncio na qual o usuário deseja ver os comentários.
-Não é necessário um token para solicitar a requisição.
-
-Response:
-
-```json
-
-[{
-	"id": 60,
-	"description": "Hey, it's pretty good.",
-	"created_at": "2023-07-04T18:28:10.235Z",
-	"edited": false,
-	"user": {
-		"id": 2,
-		"name": "Gilberto",
-		"user_color": "#153D2E"
-	}
-},
- 
- {
-	"id": 59,
-	"description": "Thanks Gilberto, very cool.",
-	"created_at": "2023-07-04T18:28:50.235Z",
-	"edited": false,
-	"user": {
-		"id": 2,
-		"name": "Jonathan",
-		"user_color": "#153D2E"
-	}
-}
-
-]
-
-```
 
 
 <h2 align ='center'> Deletar Comentários </h2>
