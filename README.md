@@ -55,7 +55,7 @@ npm run dev
 | POST        | Post ad                | `/comments/:ad_id`            | Authenticated           |
 | GET         | Get comments           |  `/comments/:ad_id`           | Authenticated           |
 | PATCH       | Patch comments         |  `/comments/:id`              | Authenticated           |
-| DELETE      | Delete comments        |  `/comments/:ad_id`           | Authenticated           |
+| DELETE      | Delete comments        |  `/comments/:id`              | Authenticated           |
 
 Deploy do render: https://motor-shop-service.onrender.com
 
