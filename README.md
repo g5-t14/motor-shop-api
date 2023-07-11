@@ -59,7 +59,7 @@ npm run dev
 
 Deploy do render: https://motor-shop-service.onrender.com
 
-Diagrama do Der: https://drive.google.com/file/d/1dWz9-AqqLakLX_afLU5QKIvF-YEVYW0V/view
+Diagrama do Der: https://drive.google.com/file/d/1p3XP8eNXN3_QF0dXVsN9t7MRk97nyIQk/view
 
 Doc do insomnia: https://g5-t14.github.io/doc-insomnia/ 
 
